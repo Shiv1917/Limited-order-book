@@ -1,0 +1,37 @@
+--- latency 0 msgs ---
+market messages      324144 (rejected 1301)
+strategy messages    17098
+fills                4258 (0 as taker)
+volume               bought 142934, sold 142841
+final inventory      93 (max |inv| 319)
+final mid            $160.87
+P&L (mark-to-mid)    $-2343.06
+  of which spread/MTM $-2914.61, rebates/fees $571.55
+max drawdown         $2360.76
+avg markout          $-0.0107 / share (negative = adverse selection)
+
+--- latency 10 msgs ---
+market messages      324144 (rejected 1356)
+strategy messages    15315
+fills                4157 (124 as taker)
+volume               bought 140290, sold 140186
+final inventory      104 (max |inv| 309)
+final mid            $160.87
+P&L (mark-to-mid)    $-2708.27
+  of which spread/MTM $-3224.35, rebates/fees $516.08
+max drawdown         $2721.96
+avg markout          $-0.0120 / share (negative = adverse selection)
+
+--- latency 100 msgs ---
+market messages      324144 (rejected 818)
+strategy messages    4805
+fills                2132 (542 as taker)
+volume               bought 71226, sold 71028
+final inventory      198 (max |inv| 498)
+final mid            $160.87
+P&L (mark-to-mid)    $-2088.47
+  of which spread/MTM $-2173.25, rebates/fees $84.78
+max drawdown         $2120.16
+avg markout          $-0.0116 / share (negative = adverse selection)
+
+wrote docs/img/mm_aapl.png

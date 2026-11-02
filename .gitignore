@@ -1,0 +1,9 @@
+build*/
+/data/
+.venv/
+__pycache__/
+*.pyc
+.cache/
+compile_commands.json
+.DS_Store
+results/raw/

@@ -1,0 +1,747 @@
+Analysis of sampling ob_bench (pid 82948) every 1 millisecond
+Process:         ob_bench [82948]
+Path:            /Users/USER/Documents/*/ob_bench
+Load Address:    0x102c88000
+Identifier:      ob_bench
+Version:         0
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  zsh [82947]
+Target Type:     live task
+
+Date/Time:       2026-11-02 10:54:24.246 +0000
+Launch Time:     2026-11-02 10:54:22.707 +0000
+OS Version:      macOS 26.5.1 (25F80)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         32.7M
+Physical footprint (peak):  32.7M
+Idle exit:                  untracked
+----
+
+Call graph:
+    3842 Thread_2713838   DispatchQueue_1: com.apple.main-thread  (serial)
+      3842 start  (in dyld) + 6992  [0x185fd7e00]
+        929 main  (in ob_bench) + 5428,5608,...  [0x102c8a334,0x102c8a3e8,...]  bench_main.cpp:174
+        851 main  (in ob_bench) + 5736  [0x102c8a468]  bench_main.cpp:174
+        + 161 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 44  [0x102c9c348]  book.hpp:283
+        + ! 150 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 220  [0x102c9c52c]  pool.hpp:82
+        + ! : 143 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 53 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 284,336,...  [0x1861b7ff0,0x1861b8024,...]
+        + ! : | 23 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 12 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 12 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 96,220,...  [0x1861b9b78,0x1861b9bf4,...]
+        + ! : | + 4 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 4 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 160,16,...  [0x1861ba920,0x1861ba890,...]
+        + ! : | + 4 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 76,40,...  [0x1861b9f60,0x1861b9f3c,...]
+        + ! : | + 2 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 224  [0x1861ba960]
+        + ! : | + 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 684  [0x1861b9dc4]
+        + ! : | 16 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 192,8,...  [0x1861b2980,0x1861b28c8,...]
+        + ! : | 14 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,0,...  [0x1861b2144,0x1861b20d4,...]
+        + ! : | 11 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 84,28,...  [0x1861b968c,0x1861b9654,...]
+        + ! : | 11 malloc_type_malloc  (in libsystem_malloc.dylib) + 16,44,...  [0x1861a5ff4,0x1861a6010,...]
+        + ! : | 7 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 7 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 84,112,...  [0x1861b9b6c,0x1861b9b88,...]
+        + ! : | 3 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1932,1936  [0x1861ba6a0,0x1861ba6a4]
+        + ! : | 2 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680,688  [0x1861b9dc0,0x1861b9dc8]
+        + ! : | 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 260  [0x1861b973c]
+        + ! : |   1 _malloc_ulock_self_owner_value  (in libsystem_malloc.dylib) + 4  [0x1861b9f08]
+        + ! : 4 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4,8  [0x102ca2fcc,0x102ca2fd0]
+        + ! : 3 operator new(unsigned long)  (in libc++abi.dylib) + 52,36  [0x18634c7e8,0x18634c7d8]
+        + ! 6 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 260,212,...  [0x102c9c554,0x102c9c524,...]  pool.hpp:82
+        + ! 2 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 16  [0x102c9c460]  pool.hpp:73
+        + ! 2 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 28  [0x102c9c46c]  pool.hpp:75
+        + 148 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 288  [0x102c9c43c]  book.hpp:309
+        + ! 129 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 268  [0x102c9c6a0]  __hash_table:1523
+        + ! : 125 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 60 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 336,420,...  [0x1861b8024,0x1861b8078,...]
+        + ! : | 19 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 8 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 8 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 200,220,...  [0x1861b9be0,0x1861b9bf4,...]
+        + ! : | + 7 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 7 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 44,160,...  [0x1861ba8ac,0x1861ba920,...]
+        + ! : | + 4 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 76,204  [0x1861b9f60,0x1861b9fe0]
+        + ! : | 15 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,164,...  [0x1861b2144,0x1861b2178,...]
+        + ! : | 12 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,180,...  [0x1861b28c8,0x1861b2974,...]
+        + ! : | 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 208,204,...  [0x1861b9708,0x1861b9704,...]
+        + ! : | 4 malloc_type_malloc  (in libsystem_malloc.dylib) + 16,28,...  [0x1861a5ff4,0x1861a6000,...]
+        + ! : | 3 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 3 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 88,116,...  [0x1861b9b70,0x1861b9b8c,...]
+        + ! : | 2 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1932,1936  [0x1861ba6a0,0x1861ba6a4]
+        + ! : | 2 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 688  [0x1861b9dc8]
+        + ! : | 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 260  [0x1861b973c]
+        + ! : |   1 _malloc_ulock_self_owner_value  (in libsystem_malloc.dylib) + 4  [0x1861b9f08]
+        + ! : 3 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! : 1 operator new(unsigned long)  (in libc++abi.dylib) + 36  [0x18634c7d8]
+        + ! 5 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 40  [0x102c9c5bc]  __hash_table:1506
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 304  [0x102c9c6c4]  __hash_table:1524
+        + ! 2 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 0,16  [0x102c9c594,0x102c9c5a4]  __hash_table:1504
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 60  [0x102c9c5d0]  __hash_table:1511
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 624  [0x102c9c804]  __hash_table:1538
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 128  [0x102c9c614]  __hash_table:0
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 236  [0x102c9c680]  __hash_table:1515
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 632  [0x102c9c80c]  __hash_table:1539
+        + 139 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 44  [0x102c9cd40]  book.hpp:283
+        + ! 129 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 220  [0x102c9c52c]  pool.hpp:82
+        + ! : 125 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 63 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 284,248,...  [0x1861b7ff0,0x1861b7fcc,...]
+        + ! : | 16 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,180,...  [0x1861b28c8,0x1861b2974,...]
+        + ! : | 14 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 8 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 8 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 96,932,...  [0x1861b9b78,0x1861b9ebc,...]
+        + ! : | + 4 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 204,76,...  [0x1861b9fe0,0x1861b9f60,...]
+        + ! : | + 2 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 684  [0x1861b9dc4]
+        + ! : | 8 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 0,112,...  [0x1861b20d4,0x1861b2144,...]
+        + ! : | 8 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 252,560,...  [0x1861b9734,0x1861b9868,...]
+        + ! : | 8 malloc_type_malloc  (in libsystem_malloc.dylib) + 52,16,...  [0x1861a6018,0x1861a5ff4,...]
+        + ! : | 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 5 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 116,112,...  [0x1861b9b8c,0x1861b9b88,...]
+        + ! : | 2 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680  [0x1861b9dc0]
+        + ! : 3 operator new(unsigned long)  (in libc++abi.dylib) + 52,36  [0x18634c7e8,0x18634c7d8]
+        + ! : 1 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! 3 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 260,212  [0x102c9c554,0x102c9c524]  pool.hpp:82
+        + ! 3 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 2 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 12,16  [0x102c9c45c,0x102c9c460]  pool.hpp:73
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 28  [0x102c9c46c]  pool.hpp:75
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 64  [0x102c9c490]  pool.hpp:80
+        + 134 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 292  [0x102c9ce38]  book.hpp:309
+        + ! 111 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 268  [0x102c9c6a0]  __hash_table:1523
+        + ! : 106 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 41 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 336,284,...  [0x1861b8024,0x1861b7ff0,...]
+        + ! : | 16 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 9 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 9 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 20,200,...  [0x1861b9b2c,0x1861b9be0,...]
+        + ! : | + 5 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 5 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 160,16,...  [0x1861ba920,0x1861ba890,...]
+        + ! : | + 2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 88,92  [0x1861b9f6c,0x1861b9f70]
+        + ! : | 13 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,192,...  [0x1861b28c8,0x1861b2980,...]
+        + ! : | 11 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 80,112,...  [0x1861b2124,0x1861b2144,...]
+        + ! : | 8 malloc_type_malloc  (in libsystem_malloc.dylib) + 72,16,...  [0x1861a602c,0x1861a5ff4,...]
+        + ! : | 6 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 6 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 112,188,...  [0x1861b9b88,0x1861b9bd4,...]
+        + ! : | 5 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 4 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 84,208,...  [0x1861b968c,0x1861b9708,...]
+        + ! : | 2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1936  [0x1861ba6a4]
+        + ! : 3 operator new(unsigned long)  (in libc++abi.dylib) + 36,52  [0x18634c7d8,0x18634c7e8]
+        + ! : 2 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! 5 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 0,32  [0x102c9c594,0x102c9c5b4]  __hash_table:1504
+        + ! 5 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 304,312,...  [0x102c9c6c4,0x102c9c6cc,...]  __hash_table:1524
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 40  [0x102c9c5bc]  __hash_table:1506
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 60,64  [0x102c9c5d0,0x102c9c5d4]  __hash_table:1511
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 112  [0x102c9c604]  __hash_table:1512
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 624  [0x102c9c804]  __hash_table:1538
+        + ! 1 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 36  [0x102c9c5b8]  __hash_table:1505
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 228  [0x102c9c678]  __hash_table:1515
+        + 40 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 144  [0x102c94f54]  book.hpp:228
+        + ! 13 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 180  [0x102c9ca84]  book.hpp:268
+        + ! : 10 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! : | 5 _free  (in libsystem_malloc.dylib) + 76,0,...  [0x1861c2c98,0x1861c2c4c,...]
+        + ! : | 5 _xzm_free  (in libsystem_malloc.dylib) + 996,232,...  [0x1861b3450,0x1861b3154,...]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13bf4  [0x102c9bbf4]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13d00  [0x102c9bd00]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13d0c  [0x102c9bd0c]
+        + ! 8 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 192  [0x102c9ca90]  book.hpp:269
+        + ! : 7 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! : | 4 _xzm_free  (in libsystem_malloc.dylib) + 220,304,...  [0x1861b3148,0x1861b319c,...]
+        + ! : | 1 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : | 1 _free  (in libsystem_malloc.dylib) + 0  [0x1861c2c4c]
+        + ! : | 1 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : |   1 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : 1 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 56  [0x102c95184]  pool.hpp:89
+        + ! 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 100  [0x102c9ca34]  book.hpp:252
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 804,200  [0x102c9ccf4,0x102c9ca98]  book.hpp:0
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 112  [0x102c9ca40]  book.hpp:253
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 208  [0x102c9caa0]  book.hpp:255
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 332  [0x102c9cb1c]  book.hpp:265
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0  [0x102c9c9d0]  book.hpp:250
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 52  [0x102c9ca04]  book.hpp:251
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 140  [0x102c9ca5c]  book.hpp:266
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 644  [0x102c9cc54]  book.hpp:274
+        + 37 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 164,88,...  [0x102c93294,0x102c93248,...]  book.hpp:170
+        + 34 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 328  [0x102c94e14]  book.hpp:228
+        + ! 9 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 156  [0x102c9c0a0]  book.hpp:268
+        + ! : 9 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! :   6 _xzm_free  (in libsystem_malloc.dylib) + 128,196,...  [0x1861b30ec,0x1861b3130,...]
+        + ! :   1 _free  (in libsystem_malloc.dylib) + 96  [0x1861c2cac]
+        + ! :   1 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 156  [0x1861bb9ac]
+        + ! :   1 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! :     1 _platform_memset  (in libsystem_platform.dylib) + 208  [0x18639f160]
+        + ! 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 168  [0x102c9c0ac]  book.hpp:269
+        + ! : 5 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! : | 2 _free  (in libsystem_malloc.dylib) + 76,104  [0x1861c2c98,0x1861c2cb4]
+        + ! : | 1 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : | 1 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 156  [0x1861bb9ac]
+        + ! : | 1 _xzm_free  (in libsystem_malloc.dylib) + 28  [0x1861b3088]
+        + ! : 1 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 36  [0x102c95170]  pool.hpp:87
+        + ! 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0,28  [0x102c9c004,0x102c9c020]  book.hpp:250
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 52  [0x102c9c038]  book.hpp:251
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 292,296  [0x102c9c128,0x102c9c12c]  book.hpp:264
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 76  [0x102c9c050]  book.hpp:252
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 88  [0x102c9c05c]  book.hpp:253
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13ac4  [0x102c9bac4]
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 760  [0x102c9c2fc]  book.hpp:0
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 220  [0x102c9c0e0]  book.hpp:259
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 308  [0x102c9c138]  book.hpp:265
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 116  [0x102c9c078]  book.hpp:266
+        + 13 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 388  [0x102c93374]  book.hpp:174
+        + 12 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 296,348,...  [0x102c93318,0x102c9334c,...]  book.hpp:172
+        + 11 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 412  [0x102c9338c]  book.hpp:173
+        + 10 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 156  [0x102c9cdb0]  book.hpp:301
+        + 9 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 824  [0x102c9cd08]  book.hpp:0
+        + 8 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 764,772,...  [0x102c9c890,0x102c9c898,...]  __hash_table:1551
+        + 7 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 780  [0x102c9c310]  book.hpp:0
+        + 7 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 144  [0x102c9cda4]  book.hpp:299
+        + 7 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 300,304  [0x102c9c57c,0x102c9c580]  pool.hpp:84
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,8,...  [0x102c94cf4,0x102c94cd4,...]  book.hpp:225
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 128  [0x102c9c39c]  book.hpp:297
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 152  [0x102c9c3b4]  book.hpp:301
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 12,0,...  [0x102c94ed0,0x102c94ec4,...]  book.hpp:225
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40  [0x102c94eec]  book.hpp:226
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 368  [0x102c93360]  book.hpp:0
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 12  [0x102c931fc]  book.hpp:164
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 196,156  [0x102c9c3e0,0x102c9c3b8]  book.hpp:302
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 236  [0x102c9ce00]  book.hpp:304
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 40,72  [0x102c93218,0x102c93238]  book.hpp:168
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 8  [0x102c9c324]  book.hpp:281
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 92  [0x102c9c378]  book.hpp:293
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 332  [0x102c94e18]  book.hpp:230
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 148  [0x102c94f58]  book.hpp:230
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 140  [0x102c9c3a8]  book.hpp:299
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 264  [0x102c9ce1c]  book.hpp:0
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 96  [0x102c9cd74]  book.hpp:293
+        + 1 DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 4  [0x102ca2cb4]
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 28  [0x102c9320c]  book.hpp:165
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 264  [0x102c9c424]  book.hpp:0
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 88  [0x102c9c374]  book.hpp:292
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 216  [0x102c9c3f4]  book.hpp:304
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 12  [0x102c9cd20]  book.hpp:281
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 132  [0x102c9cd98]  book.hpp:297
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 160  [0x102c9cdb4]  book.hpp:302
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 260  [0x102c9ce18]  book.hpp:306
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 240  [0x102c9ce04]  book.hpp:307
+        796 main  (in ob_bench) + 4676  [0x102c8a044]  bench_main.cpp:174
+        + 159 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 288  [0x102c9c43c]  book.hpp:309
+        + ! 140 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 268  [0x102c9c6a0]  __hash_table:1523
+        + ! : 135 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 54 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 336,284,...  [0x1861b8024,0x1861b7ff0,...]
+        + ! : | 24 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 11 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 11 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 96,932,...  [0x1861b9b78,0x1861b9ebc,...]
+        + ! : | + 9 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 9 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 44,160  [0x1861ba8ac,0x1861ba920]
+        + ! : | + 2 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 684  [0x1861b9dc4]
+        + ! : | + 1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 224  [0x1861ba960]
+        + ! : | + 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 76  [0x1861b9f60]
+        + ! : | 17 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 192,8,...  [0x1861b2980,0x1861b28c8,...]
+        + ! : | 14 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 212,112,...  [0x1861b21a8,0x1861b2144,...]
+        + ! : | 7 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 84,252,...  [0x1861b968c,0x1861b9734,...]
+        + ! : | 6 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 6 malloc_type_malloc  (in libsystem_malloc.dylib) + 28,16,...  [0x1861a6000,0x1861a5ff4,...]
+        + ! : | 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 5 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 88,112,...  [0x1861b9b70,0x1861b9b88,...]
+        + ! : | 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1932  [0x1861ba6a0]
+        + ! : | 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680  [0x1861b9dc0]
+        + ! : 3 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! : 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 808  [0x1861b9960]
+        + ! : 1 operator new(unsigned long)  (in libc++abi.dylib) + 36  [0x18634c7d8]
+        + ! 6 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 40  [0x102c9c5bc]  __hash_table:1506
+        + ! 4 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 16  [0x102c9c5a4]  __hash_table:1504
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 304  [0x102c9c6c4]  __hash_table:1524
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 340  [0x102c9c6e8]  __hash_table:1541
+        + ! 1 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 120  [0x102c9c60c]  __hash_table:0
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 60  [0x102c9c5d0]  __hash_table:1511
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 228  [0x102c9c678]  __hash_table:1515
+        + 146 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 44  [0x102c9c348]  book.hpp:283
+        + ! 133 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 220  [0x102c9c52c]  pool.hpp:82
+        + ! : 128 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 42 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 284,276,...  [0x1861b7ff0,0x1861b7fe8,...]
+        + ! : | 28 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 11 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 11 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 20,96,...  [0x1861b9b2c,0x1861b9b78,...]
+        + ! : | + 8 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 204,184,...  [0x1861b9fe0,0x1861b9fcc,...]
+        + ! : | + 7 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 7 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 44,68,...  [0x1861ba8ac,0x1861ba8c4,...]
+        + ! : | + 2 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 224  [0x1861ba960]
+        + ! : | 15 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,192,...  [0x1861b28c8,0x1861b2980,...]
+        + ! : | 14 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,212,...  [0x1861b2144,0x1861b21a8,...]
+        + ! : | 10 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 252,428,...  [0x1861b9734,0x1861b97e4,...]
+        + ! : | 6 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 5 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 200,28,...  [0x1861b9be0,0x1861b9b34,...]
+        + ! : | 4 malloc_type_malloc  (in libsystem_malloc.dylib) + 44,28,...  [0x1861a6010,0x1861a6000,...]
+        + ! : | 3 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1936  [0x1861ba6a4]
+        + ! : | 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680  [0x1861b9dc0]
+        + ! : 3 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4,8  [0x102ca2fcc,0x102ca2fd0]
+        + ! : 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 808  [0x1861b9960]
+        + ! : 1 operator new(unsigned long)  (in libc++abi.dylib) + 36  [0x18634c7d8]
+        + ! 6 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 28  [0x102c9c46c]  pool.hpp:75
+        + ! 3 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 16  [0x102c9c460]  pool.hpp:73
+        + ! 2 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 64,208  [0x102c9c490,0x102c9c520]  pool.hpp:80
+        + ! 2 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 212,260  [0x102c9c524,0x102c9c554]  pool.hpp:82
+        + 132 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 44  [0x102c9cd40]  book.hpp:283
+        + ! 118 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 220  [0x102c9c52c]  pool.hpp:82
+        + ! : 116 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 49 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,276,...  [0x1861b7f2c,0x1861b7fe8,...]
+        + ! : | 23 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 11 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 11 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 200,56,...  [0x1861b9be0,0x1861b9b50,...]
+        + ! : | + 7 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 76,40,...  [0x1861b9f60,0x1861b9f3c,...]
+        + ! : | + 2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 2 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 16,44  [0x1861ba890,0x1861ba8ac]
+        + ! : | + 2 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 684  [0x1861b9dc4]
+        + ! : | + 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 860  [0x1861ba270]
+        + ! : | +   1 xzm_chunk_mark_used  (in libsystem_malloc.dylib) + 188  [0x18619aecc]
+        + ! : | +     1 _xzm_reclaim_mark_used  (in libsystem_malloc.dylib) + 124  [0x18619af7c]
+        + ! : | +       1 _xzm_reclaim_mark_used_locked  (in libsystem_malloc.dylib) + 60  [0x18619da50]
+        + ! : | +         1 mach_vm_reclaim_try_cancel  (in libsystem_kernel.dylib) + 260  [0x1863652c8]
+        + ! : | +           1 mach_absolute_time  (in libsystem_kernel.dylib) + 108  [0x18635210c]
+        + ! : | 10 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 116,164,...  [0x1861b2148,0x1861b2178,...]
+        + ! : | 10 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,192,...  [0x1861b28c8,0x1861b2980,...]
+        + ! : | 6 malloc_type_malloc  (in libsystem_malloc.dylib) + 16,52,...  [0x1861a5ff4,0x1861a6018,...]
+        + ! : | 5 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 5 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 112,108,...  [0x1861b9b88,0x1861b9b84,...]
+        + ! : | 4 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 252,28,...  [0x1861b9734,0x1861b9654,...]
+        + ! : | 3 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680,688  [0x1861b9dc0,0x1861b9dc8]
+        + ! : | 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1936  [0x1861ba6a4]
+        + ! : 1 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! : 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 808  [0x1861b9960]
+        + ! 6 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 212,248,...  [0x102c9c524,0x102c9c548,...]  pool.hpp:82
+        + ! 4 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 28  [0x102c9c46c]  pool.hpp:75
+        + ! 2 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 16  [0x102c9c460]  pool.hpp:73
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 64  [0x102c9c490]  pool.hpp:80
+        + 130 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 292  [0x102c9ce38]  book.hpp:309
+        + ! 103 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 268  [0x102c9c6a0]  __hash_table:1523
+        + ! : 101 operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        + ! : | 44 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 336,76,...  [0x1861b8024,0x1861b7f20,...]
+        + ! : | 14 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        + ! : | + 7 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 76,204,...  [0x1861b9f60,0x1861b9fe0,...]
+        + ! : | + 4 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        + ! : | + ! 4 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 96,440,...  [0x1861b9b78,0x1861b9cd0,...]
+        + ! : | + 1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 224  [0x1861ba960]
+        + ! : | + 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        + ! : | + ! 1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 44  [0x1861ba8ac]
+        + ! : | + 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 684  [0x1861b9dc4]
+        + ! : | 10 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,0,...  [0x1861b2144,0x1861b20d4,...]
+        + ! : | 9 malloc_type_malloc  (in libsystem_malloc.dylib) + 28,72,...  [0x1861a6000,0x1861a602c,...]
+        + ! : | 7 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 288,28,...  [0x1861b9758,0x1861b9654,...]
+        + ! : | 6 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 324,336,...  [0x1861b2a04,0x1861b2a10,...]
+        + ! : | 4 DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 8  [0x18634cc18]
+        + ! : | 3 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1936,1932  [0x1861ba6a4,0x1861ba6a0]
+        + ! : | 3 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        + ! : | + 3 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 116,112  [0x1861b9b8c,0x1861b9b88]
+        + ! : | 1 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 680  [0x1861b9dc0]
+        + ! : 1 DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 4  [0x102ca2fcc]
+        + ! : 1 operator new(unsigned long)  (in libc++abi.dylib) + 36  [0x18634c7d8]
+        + ! 6 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 40  [0x102c9c5bc]  __hash_table:1506
+        + ! 6 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 304,312,...  [0x102c9c6c4,0x102c9c6cc,...]  __hash_table:1524
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 0,4,...  [0x102c9c594,0x102c9c598,...]  __hash_table:1504
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 60  [0x102c9c5d0]  __hash_table:1511
+        + ! 3 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 624  [0x102c9c804]  __hash_table:1538
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 128,220  [0x102c9c614,0x102c9c670]  __hash_table:0
+        + ! 2 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 112  [0x102c9c604]  __hash_table:1512
+        + ! 1 operator new(unsigned long)  (in libc++abi.dylib) + 76  [0x18634c800]
+        + ! 1 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 632  [0x102c9c80c]  __hash_table:1539
+        + 44 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 144  [0x102c94f54]  book.hpp:228
+        + ! 10 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 180  [0x102c9ca84]  book.hpp:268
+        + ! : 5 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! : | 5 _xzm_free  (in libsystem_malloc.dylib) + 28,304,...  [0x1861b3088,0x1861b319c,...]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd4  [0x102c9bbd4]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13bf4  [0x102c9bbf4]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13c28  [0x102c9bc28]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13ca0  [0x102c9bca0]
+        + ! : 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13cac  [0x102c9bcac]
+        + ! 8 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 192  [0x102c9ca90]  book.hpp:269
+        + ! : 8 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! :   6 _xzm_free  (in libsystem_malloc.dylib) + 800,48,...  [0x1861b338c,0x1861b309c,...]
+        + ! :   1 _free  (in libsystem_malloc.dylib) + 104  [0x1861c2cb4]
+        + ! :   1 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 32  [0x1861bb930]
+        + ! 7 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 100  [0x102c9ca34]  book.hpp:252
+        + ! 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 112  [0x102c9ca40]  book.hpp:253
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 200  [0x102c9ca98]  book.hpp:0
+        + ! 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 28  [0x102c9c9ec]  book.hpp:250
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 208  [0x102c9caa0]  book.hpp:255
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 332  [0x102c9cb1c]  book.hpp:265
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 56  [0x102c9ca08]  book.hpp:251
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 316  [0x102c9cb0c]  book.hpp:264
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 488  [0x102c9cbb8]  book.hpp:272
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 556  [0x102c9cbfc]  book.hpp:273
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 644  [0x102c9cc54]  book.hpp:274
+        + 39 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 164,156,...  [0x102c93294,0x102c9328c,...]  book.hpp:170
+        + 20 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 328  [0x102c94e14]  book.hpp:228
+        + ! 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 156  [0x102c9c0a0]  book.hpp:268
+        + ! : 6 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! :   5 _xzm_free  (in libsystem_malloc.dylib) + 220,780,...  [0x1861b3148,0x1861b3378,...]
+        + ! :   1 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! :     1 _platform_memset  (in libsystem_platform.dylib) + 180  [0x18639f144]
+        + ! 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 76  [0x102c9c050]  book.hpp:252
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0  [0x102c9c004]  book.hpp:250
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 168  [0x102c9c0ac]  book.hpp:269
+        + ! : 2 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! :   2 _xzm_free  (in libsystem_malloc.dylib) + 684,800  [0x1861b3318,0x1861b338c]
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 176  [0x102c9c0b4]  book.hpp:0
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 184  [0x102c9c0bc]  book.hpp:255
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 292  [0x102c9c128]  book.hpp:264
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 308  [0x102c9c138]  book.hpp:265
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 476  [0x102c9c1e0]  book.hpp:273
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 624  [0x102c9c274]  book.hpp:274
+        + 18 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 156  [0x102c9cdb0]  book.hpp:301
+        + 13 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 412  [0x102c9338c]  book.hpp:173
+        + 10 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 388  [0x102c93374]  book.hpp:174
+        + 7 std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench) + 772,764,...  [0x102c9c898,0x102c9c890,...]  __hash_table:1551
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 52,60,...  [0x102c93224,0x102c9322c,...]  book.hpp:168
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 152  [0x102c9c3b4]  book.hpp:301
+        + 5 DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 4,0  [0x102ca2cb4,0x102ca2cb0]
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,44  [0x102c94eec,0x102c94ef0]  book.hpp:226
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 28  [0x102c9320c]  book.hpp:165
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 132  [0x102c9cd98]  book.hpp:297
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 236,220  [0x102c9ce00,0x102c9cdf0]  book.hpp:304
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 44  [0x102c94cf8]  book.hpp:226
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 780  [0x102c9c310]  book.hpp:0
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 824  [0x102c9cd08]  book.hpp:0
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 92  [0x102c9c378]  book.hpp:293
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 128  [0x102c9c39c]  book.hpp:297
+        + 3 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 144  [0x102c9cda4]  book.hpp:299
+        + 3 ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench) + 292,300,...  [0x102c9c574,0x102c9c57c,...]  pool.hpp:84
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 8,28  [0x102c94cd4,0x102c94ce8]  book.hpp:225
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 368  [0x102c93360]  book.hpp:0
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 292,296  [0x102c93314,0x102c93318]  book.hpp:172
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 140  [0x102c9c3a8]  book.hpp:299
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 156,196  [0x102c9c3b8,0x102c9c3e0]  book.hpp:302
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 160  [0x102c9cdb4]  book.hpp:302
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 8  [0x102c94ecc]  book.hpp:225
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 16  [0x102c93200]  book.hpp:164
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 8  [0x102c9c324]  book.hpp:281
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 216  [0x102c9c3f4]  book.hpp:304
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 288  [0x102c9c43c]  book.hpp:310
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 92  [0x102c9cd70]  book.hpp:292
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 260  [0x102c9ce18]  book.hpp:306
+        482 main  (in ob_bench) + 4960  [0x102c8a160]  bench_main.cpp:174
+        + 215 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 288  [0x102c95128]  book.hpp:327
+        + ! 155 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! : 99 _xzm_free  (in libsystem_malloc.dylib) + 780,800,...  [0x1861b3378,0x1861b338c,...]
+        + ! : 20 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : | 16 _platform_memset  (in libsystem_platform.dylib) + 180,208  [0x18639f144,0x18639f160]
+        + ! : | 4 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : 18 _free  (in libsystem_malloc.dylib) + 36,0,...  [0x1861c2c70,0x1861c2c4c,...]
+        + ! : 6 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : 4 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 136,156  [0x1861bb998,0x1861bb9ac]
+        + ! : 3 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + ! : 3 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 128  [0x1861bb990]
+        + ! : | 3 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 44,96  [0x1861ba808,0x1861ba83c]
+        + ! : 2 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 156  [0x1861ba878]
+        + ! 14 _xzm_free  (in libsystem_malloc.dylib) + 1560,1384,...  [0x1861b3684,0x1861b35d4,...]
+        + ! 11 ???  (in ob_bench)  load address 0x102c88000 + 0x13c70  [0x102c9bc70]
+        + ! 11 ???  (in ob_bench)  load address 0x102c88000 + 0x13cac  [0x102c9bcac]
+        + ! 5 ???  (in ob_bench)  load address 0x102c88000 + 0x13ca0  [0x102c9bca0]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13b30  [0x102c9bb30]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd4  [0x102c9bbd4]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13bf4  [0x102c9bbf4]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13c28  [0x102c9bc28]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13cf8  [0x102c9bcf8]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13d00  [0x102c9bd00]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13d0c  [0x102c9bd0c]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13b20  [0x102c9bb20]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13b40  [0x102c9bb40]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13bc4  [0x102c9bbc4]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13c40  [0x102c9bc40]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13cb4  [0x102c9bcb4]
+        + 146 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 300  [0x102c95134]  book.hpp:328
+        + ! 130 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! : 77 _xzm_free  (in libsystem_malloc.dylib) + 800,780,...  [0x1861b338c,0x1861b3378,...]
+        + ! : 19 _free  (in libsystem_malloc.dylib) + 56,0,...  [0x1861c2c84,0x1861c2c4c,...]
+        + ! : 8 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 128  [0x1861bb990]
+        + ! : | 8 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 96,48,...  [0x1861ba83c,0x1861ba80c,...]
+        + ! : 8 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : | 5 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : | 2 _platform_memset  (in libsystem_platform.dylib) + 160  [0x18639f130]
+        + ! : | 1 __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+        + ! : 6 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : 5 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 156  [0x1861ba878]
+        + ! : 5 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 16,32,...  [0x1861bb920,0x1861bb930,...]
+        + ! : 2 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + ! 7 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 36  [0x102c95170]  pool.hpp:87
+        + ! 4 _xzm_free  (in libsystem_malloc.dylib) + 1384,1380  [0x1861b35d4,0x1861b35d0]
+        + ! 2 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 260  [0x1861bba14]
+        + ! 2 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 56  [0x102c95184]  pool.hpp:89
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 228  [0x102c95230]  pool.hpp:91
+        + 35 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 104  [0x102c95070]  book.hpp:318
+        + 30 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 76,64,...  [0x102c95054,0x102c95048,...]  book.hpp:317
+        + 21 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 92  [0x102c95064]  book.hpp:319
+        + 7 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 148  [0x102c9509c]  book.hpp:323
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 244  [0x102c950fc]  book.hpp:0
+        + 4 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 244  [0x102c95240]  pool.hpp:91
+        + 3 ???  (in ob_bench)  load address 0x102c88000 + 0x13ac4  [0x102c9bac4]
+        + 3 DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 4,0  [0x102ca2cc0,0x102ca2cbc]
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 40  [0x102c95030]  book.hpp:315
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 52  [0x102c9503c]  book.hpp:316
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 116  [0x102c9507c]  book.hpp:320
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 208  [0x102c950d8]  book.hpp:324
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 256  [0x102c95108]  book.hpp:325
+        + ! 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 212,272  [0x102c93e98,0x102c93ed4]  book.hpp:153
+        + 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13adc  [0x102c9badc]
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 120  [0x102c95080]  book.hpp:321
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 268  [0x102c95114]  book.hpp:327
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 300  [0x102c95134]  book.hpp:329
+        444 main  (in ob_bench) + 6024  [0x102c8a588]  bench_main.cpp:174
+        + 184 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 288  [0x102c95128]  book.hpp:327
+        + ! 129 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        + ! : 77 _xzm_free  (in libsystem_malloc.dylib) + 996,780,...  [0x1861b3450,0x1861b3378,...]
+        + ! : 22 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : | 16 _platform_memset  (in libsystem_platform.dylib) + 180,208  [0x18639f144,0x18639f160]
+        + ! : | 5 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : | 1 __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+        + ! : 16 _free  (in libsystem_malloc.dylib) + 104,0,...  [0x1861c2cb4,0x1861c2c4c,...]
+        + ! : 6 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : 3 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 128  [0x1861bb990]
+        + ! : | 3 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 44,12  [0x1861ba808,0x1861ba7e8]
+        + ! : 3 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 16,32,...  [0x1861bb920,0x1861bb930,...]
+        + ! : 1 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + ! : 1 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 156  [0x1861ba878]
+        + ! 14 ???  (in ob_bench)  load address 0x102c88000 + 0x13cac  [0x102c9bcac]
+        + ! 6 _xzm_free  (in libsystem_malloc.dylib) + 1560,1380,...  [0x1861b3684,0x1861b35d0,...]
+        + ! 5 ???  (in ob_bench)  load address 0x102c88000 + 0x13bf4  [0x102c9bbf4]
+        + ! 4 ???  (in ob_bench)  load address 0x102c88000 + 0x13c40  [0x102c9bc40]
+        + ! 4 ???  (in ob_bench)  load address 0x102c88000 + 0x13c70  [0x102c9bc70]
+        + ! 3 ???  (in ob_bench)  load address 0x102c88000 + 0x13b30  [0x102c9bb30]
+        + ! 3 ???  (in ob_bench)  load address 0x102c88000 + 0x13ca0  [0x102c9bca0]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13b20  [0x102c9bb20]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13b40  [0x102c9bb40]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13bc4  [0x102c9bbc4]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13cb4  [0x102c9bcb4]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13cf8  [0x102c9bcf8]
+        + ! 2 ???  (in ob_bench)  load address 0x102c88000 + 0x13d0c  [0x102c9bd0c]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13bd4  [0x102c9bbd4]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13c28  [0x102c9bc28]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13c30  [0x102c9bc30]
+        + ! 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13d00  [0x102c9bd00]
+        + 137 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 300  [0x102c95134]  book.hpp:328
+        + ! 124 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        + ! : 74 _xzm_free  (in libsystem_malloc.dylib) + 996,800,...  [0x1861b3450,0x1861b338c,...]
+        + ! : 17 _free  (in libsystem_malloc.dylib) + 36,76,...  [0x1861c2c70,0x1861c2c98,...]
+        + ! : 8 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 32,16,...  [0x1861bb930,0x1861bb920,...]
+        + ! : 8 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : | 3 __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+        + ! : | 3 _platform_memset  (in libsystem_platform.dylib) + 160  [0x18639f130]
+        + ! : | 2 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : 7 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 128  [0x1861bb990]
+        + ! : | 7 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 96,8,...  [0x1861ba83c,0x1861ba7e4,...]
+        + ! : 6 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! : 3 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 156  [0x1861ba878]
+        + ! : 1 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + ! 5 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 36  [0x102c95170]  pool.hpp:87
+        + ! 4 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 228  [0x102c95230]  pool.hpp:91
+        + ! 3 _xzm_free  (in libsystem_malloc.dylib) + 1384,1560  [0x1861b35d4,0x1861b3684]
+        + ! 1 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 56  [0x102c95184]  pool.hpp:89
+        + 35 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 104  [0x102c95070]  book.hpp:318
+        + 18 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 92  [0x102c95064]  book.hpp:319
+        + 17 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 76,64  [0x102c95054,0x102c95048]  book.hpp:317
+        + 11 ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 244,236,...  [0x102c95240,0x102c95238,...]  pool.hpp:91
+        + 8 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 148  [0x102c9509c]  book.hpp:323
+        + 7 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 116  [0x102c9507c]  book.hpp:320
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 208  [0x102c950d8]  book.hpp:324
+        + 4 ???  (in ob_bench)  load address 0x102c88000 + 0x13ac4  [0x102c9bac4]
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 40  [0x102c95030]  book.hpp:315
+        + 4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 256  [0x102c95108]  book.hpp:325
+        + ! 1 DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 4  [0x102ca2dd4]
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 0  [0x102c93dc4]  book.hpp:148
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 28  [0x102c93de0]  book.hpp:149
+        + ! 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 132  [0x102c93e48]  book.hpp:152
+        + 2 DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 4  [0x102ca2cc0]
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 244  [0x102c950fc]  book.hpp:0
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 268  [0x102c95114]  book.hpp:327
+        + 1 ???  (in ob_bench)  load address 0x102c88000 + 0x13adc  [0x102c9badc]
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 52  [0x102c9503c]  book.hpp:316
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 120  [0x102c95080]  book.hpp:321
+        + 1 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 300  [0x102c95134]  book.hpp:329
+        70 main  (in ob_bench) + 4448  [0x102c89f60]  bench_main.cpp:174
+        + 37 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::~BasicBook()  (in ob_bench) + 220  [0x102c91804]  book.hpp:391
+        + ! 26 _xzm_free  (in libsystem_malloc.dylib) + 996,692,...  [0x1861b3450,0x1861b3320,...]
+        + ! 7 _free  (in libsystem_malloc.dylib) + 0,36,...  [0x1861c2c4c,0x1861c2c70,...]
+        + ! 2 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : 2 __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+        + ! 1 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! 1 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + 28 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::~BasicBook()  (in ob_bench) + 276  [0x102c9183c]  book.hpp:391
+        + ! 14 _xzm_free  (in libsystem_malloc.dylib) + 996,220,...  [0x1861b3450,0x1861b3148,...]
+        + ! 8 _free  (in libsystem_malloc.dylib) + 0,56,...  [0x1861c2c4c,0x1861c2c84,...]
+        + ! 4 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : 2 _platform_memset  (in libsystem_platform.dylib) + 132,160  [0x18639f114,0x18639f130]
+        + ! : 1 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! : 1 __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+        + ! 2 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + 5 _xzm_free  (in libsystem_malloc.dylib) + 1560,1544  [0x1861b3684,0x1861b3674]
+        65 main  (in ob_bench) + 5388  [0x102c8a30c]  bench_main.cpp:174
+        + 32 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::~BasicBook()  (in ob_bench) + 220  [0x102c91804]  book.hpp:391
+        + ! 21 _xzm_free  (in libsystem_malloc.dylib) + 996,196,...  [0x1861b3450,0x1861b3130,...]
+        + ! 6 _free  (in libsystem_malloc.dylib) + 56,0,...  [0x1861c2c84,0x1861c2c4c,...]
+        + ! 4 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : 3 _platform_memset  (in libsystem_platform.dylib) + 180,208  [0x18639f144,0x18639f160]
+        + ! : 1 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 8  [0x1861ca7f4]
+        + ! 1 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + 26 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::~BasicBook()  (in ob_bench) + 276  [0x102c9183c]  book.hpp:391
+        + ! 14 _xzm_free  (in libsystem_malloc.dylib) + 996,580,...  [0x1861b3450,0x1861b32b0,...]
+        + ! 8 _free  (in libsystem_malloc.dylib) + 76,0,...  [0x1861c2c98,0x1861c2c4c,...]
+        + ! 2 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        + ! : 2 _platform_memset  (in libsystem_platform.dylib) + 160  [0x18639f130]
+        + ! 1 DYLD-STUB$$free  (in libc++abi.dylib) + 8  [0x18634cbd8]
+        + ! 1 DYLD-STUB$$operator delete(void*)  (in ob_bench) + 4  [0x102ca2fa8]
+        + 5 _xzm_free  (in libsystem_malloc.dylib) + 1560  [0x1861b3684]
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::~BasicBook()  (in ob_bench) + 252  [0x102c91824]  book.hpp:391
+        64 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 420,424  [0x102c93394,0x102c93398]  book.hpp:173
+        52 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 396  [0x102c9337c]  book.hpp:174
+        35 main  (in ob_bench) + 4480  [0x102c89f80]  bench_main.cpp:174
+        + 21 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 136  [0x102c92c70]  book.hpp:72
+        + ! 21 ob::StdIdMap::StdIdMap(unsigned long)  (in ob_bench) + 228  [0x102c9b654]  flat_map.hpp:118
+        + !   21 ???  (in ob_bench)  load address 0x102c88000 + 0x136c4  [0x102c9b6c4]
+        + 8 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 240  [0x102c92cd8]  book.hpp:74
+        + ! 8 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208,212  [0x102c92f1c,0x102c92f20]  vector:1405
+        + 6 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 292  [0x102c92d0c]  book.hpp:74
+        +   6 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208  [0x102c92f1c]  vector:1405
+        33 main  (in ob_bench) + 5400  [0x102c8a318]  bench_main.cpp:174
+        + 26 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 136  [0x102c92c70]  book.hpp:72
+        + ! 26 ob::StdIdMap::StdIdMap(unsigned long)  (in ob_bench) + 228  [0x102c9b654]  flat_map.hpp:118
+        + !   26 ???  (in ob_bench)  load address 0x102c88000 + 0x136c4  [0x102c9b6c4]
+        + 5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 240  [0x102c92cd8]  book.hpp:74
+        + ! 5 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208  [0x102c92f1c]  vector:1405
+        + 2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 292  [0x102c92d0c]  book.hpp:74
+        +   2 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208,216  [0x102c92f1c,0x102c92f24]  vector:1405
+        8 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench) + 312  [0x102c95140]  book.hpp:329
+        5 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 296  [0x102c9c444]  book.hpp:310
+        4 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 300  [0x102c9ce40]  book.hpp:310
+        2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 400  [0x102c94e5c]  book.hpp:232
+        2 ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 112,116  [0x102c94f34,0x102c94f38]  book.hpp:232
+
+Total number in stack (recursive counted multiple, when >=5):
+        28       _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 0  [0x1861b9b18]
+        22       _xzm_free  (in libsystem_malloc.dylib) + 0  [0x1861b306c]
+        15       _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 0  [0x1861b9f14]
+        14       operator new(unsigned long)  (in libc++abi.dylib) + 0  [0x18634c7b4]
+        13       _free  (in libsystem_malloc.dylib) + 0  [0x1861c2c4c]
+        11       _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 0  [0x1861ba880]
+        11       _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1861b31cc]
+        11       _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 0  [0x1861b9638]
+        10       DYLD-STUB$$free  (in libc++abi.dylib) + 0  [0x18634cbd0]
+        9       _platform_memset  (in libsystem_platform.dylib) + 0  [0x18639f090]
+        8       <deduplicated_symbol>  (in libsystem_malloc.dylib) + 0  [0x1861b20d4]
+        8       DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib) + 0  [0x18634cc10]
+        8       DYLD-STUB$$operator new(unsigned long)  (in ob_bench) + 0  [0x102ca2fc8]
+        8       _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 0  [0x1861ba7dc]
+        8       _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 0  [0x1861bb910]
+        8       _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 336  [0x1861ba064]
+        8       _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 0  [0x1861b28c0]
+        8       _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1861b9730]
+        8       _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1861b977c]
+        8       _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 0  [0x1861b7ed4]
+        8       malloc_type_malloc  (in libsystem_malloc.dylib) + 0  [0x1861a5fe4]
+        8       operator new(unsigned long)  (in libc++abi.dylib) + 52  [0x18634c7e8]
+        7       DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 0  [0x1861ca7ec]
+        7       _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 168  [0x1861b9fbc]
+        6       ???  (in ob_bench)  load address 0x102c88000 + 0x13bd0  [0x102c9bbd0]
+        6       DYLD-STUB$$operator delete(void*)  (in ob_bench) + 0  [0x102ca2fa4]
+        6       ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench) + 48  [0x102c9517c]  pool.hpp:87
+        5       __bzero  (in libsystem_platform.dylib) + 0  [0x18639f030]
+
+Sort by top of stack, same collapsed (when >= 5):
+        main  (in ob_bench)        929
+        _xzm_free  (in libsystem_malloc.dylib)        473
+        _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib)        406
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench)        280
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench)        217
+        _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib)        132
+        _free  (in libsystem_malloc.dylib)        109
+        _xzm_xzone_malloc  (in libsystem_malloc.dylib)        105
+        std::__hash_table<std::__hash_value_type<unsigned long long, unsigned int>>::__emplace_unique_key_args<unsigned long long, unsigned long long&, unsigned int&>(unsigned long long const&, unsigned long long&, unsigned int&)  (in ob_bench)        98
+        <deduplicated_symbol>  (in libsystem_malloc.dylib)        96
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench)        69
+        _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib)        59
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench)        57
+        malloc_type_malloc  (in libsystem_malloc.dylib)        56
+        _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib)        51
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench)        51
+        ob::HeapStorage<ob::OrderLoose>::alloc()  (in ob_bench)        51
+        ???  (in ob_bench)  load address 0x102c88000 + 0x136c4  [0x102c9b6c4]        47
+        _platform_memset  (in libsystem_platform.dylib)        46
+        _xzm_chunk_list_pop  (in libsystem_malloc.dylib)        41
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench)        40
+        ob::HeapStorage<ob::OrderLoose>::free(unsigned int)  (in ob_bench)        37
+        DYLD-STUB$$malloc_type_malloc  (in libc++abi.dylib)        33
+        _xzm_chunk_list_push  (in libsystem_malloc.dylib)        32
+        DYLD-STUB$$free  (in libc++abi.dylib)        31
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13cac  [0x102c9bcac]        26
+        _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib)        25
+        operator new(unsigned long)  (in libc++abi.dylib)        25
+        std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench)        21
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench)        20
+        DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib)        19
+        DYLD-STUB$$operator new(unsigned long)  (in ob_bench)        18
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench)        16
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13c70  [0x102c9bc70]        15
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13bf4  [0x102c9bbf4]        9
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13ca0  [0x102c9bca0]        9
+        DYLD-STUB$$operator delete(void*)  (in ob_bench)        9
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13ac4  [0x102c9bac4]        8
+        __bzero  (in libsystem_platform.dylib)        8
+        DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench)        6
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13b30  [0x102c9bb30]        5
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13c40  [0x102c9bc40]        5
+        ???  (in ob_bench)  load address 0x102c88000 + 0x13d0c  [0x102c9bd0c]        5
+        DYLD-STUB$$ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::remove(unsigned int)  (in ob_bench)        5
+        ob::BasicBook<ob::OrderLoose, ob::HeapStorage, ob::StdIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench)        5
+
+Binary Images:
+       0x102c88000 -        0x102ca48db +ob_bench (0) <CE7594A2-86CF-3802-AD82-692DF88125FD> /Users/*/Documents/*/ob_bench
+       0x185f30000 -        0x185f82b4b  libobjc.A.dylib (951.7) <FF1D8AE4-ABEF-35F1-A30A-1183B9CB414F> /usr/lib/libobjc.A.dylib
+       0x185f83000 -        0x185fb7d07  libdyld.dylib (1378) <B147D877-D0C2-388F-B38D-D3132E39905F> /usr/lib/system/libdyld.dylib
+       0x185fb8000 -        0x18605e217  dyld (1.0.0 - 1378) <A237EF81-B68B-37BA-A165-92C965529534> /usr/lib/dyld
+       0x18605f000 -        0x186062228  libsystem_blocks.dylib (96) <CC947089-488D-316B-A9C7-46DEC0F73145> /usr/lib/system/libsystem_blocks.dylib
+       0x186063000 -        0x1860b755f  libxpc.dylib (3102.120.13) <C40FCAE8-7A17-3D82-87CB-3DA4802ADEF1> /usr/lib/system/libxpc.dylib
+       0x1860b8000 -        0x1860d89ff  libsystem_trace.dylib (1861.120.4) <D0FABAB3-5AE7-3F10-8C62-60CBF5D70850> /usr/lib/system/libsystem_trace.dylib
+       0x1860d9000 -        0x1861875f7  libcorecrypto.dylib (1922.121.1) <A01A158D-6FE7-3B1C-A2C4-6BCB90D7314A> /usr/lib/system/libcorecrypto.dylib
+       0x186188000 -        0x1861d81d7  libsystem_malloc.dylib (812.100.31) <5FAE4807-4D2B-3A95-A63A-DD96D3DA11B4> /usr/lib/system/libsystem_malloc.dylib
+       0x1861d9000 -        0x18622023f  libdispatch.dylib (1542.100.32) <F071EFE4-299F-3089-ACC4-0025B8FFB52A> /usr/lib/system/libdispatch.dylib
+       0x186221000 -        0x186223ffb  libsystem_featureflags.dylib (103) <71FCFFBD-85F8-3365-AFE0-BECEA4369122> /usr/lib/system/libsystem_featureflags.dylib
+       0x186224000 -        0x1862a4d9f  libsystem_c.dylib (1752.120.2) <694B7881-1BF3-3D0F-8F19-B50AE4E8EF8A> /usr/lib/system/libsystem_c.dylib
+       0x1862a5000 -        0x186335ae7  libc++.1.dylib (2100.43) <5013C0F8-84A9-3B56-9FEB-C353816A750F> /usr/lib/libc++.1.dylib
+       0x186336000 -        0x18635075f  libc++abi.dylib (2100.43) <E482D257-E5A0-3816-BD97-7B39342958DA> /usr/lib/libc++abi.dylib
+       0x186351000 -        0x18638e2af  libsystem_kernel.dylib (12377.121.6) <CC1CF985-BC65-3725-809F-4C1E36B8F4BA> /usr/lib/system/libsystem_kernel.dylib
+       0x18638f000 -        0x18639bb3b  libsystem_pthread.dylib (539.100.4) <4F33683C-18C8-39A1-800B-2E3BD43BCC13> /usr/lib/system/libsystem_pthread.dylib
+       0x18639c000 -        0x1863a4963  libsystem_platform.dylib (375.120.2) <160FD864-8D15-36FC-9E97-9725388CFAFE> /usr/lib/system/libsystem_platform.dylib
+       0x1863a5000 -        0x1863d46eb  libsystem_info.dylib (600) <3D62F2D9-F516-31BF-83C7-E203D872300B> /usr/lib/system/libsystem_info.dylib
+       0x18a36c000 -        0x18a375e5f  libsystem_darwin.dylib (1752.120.2) <8858F025-745A-388E-9544-080781CC9A69> /usr/lib/system/libsystem_darwin.dylib
+       0x18a7d7000 -        0x18a7e91b6  libsystem_notify.dylib (348.120.4) <64D76451-1E0C-369B-A631-54DA3140E083> /usr/lib/system/libsystem_notify.dylib
+       0x18caa4000 -        0x18cabef7b  libsystem_networkextension.dylib (2226.121.1) <0331EE20-A1FB-3C0D-990A-F65939CFF505> /usr/lib/system/libsystem_networkextension.dylib
+       0x18cb41000 -        0x18cb58fdf  libsystem_asl.dylib (406) <F40838DF-2F15-3F62-970F-DEE25706BF1B> /usr/lib/system/libsystem_asl.dylib
+       0x18e6ff000 -        0x18e707387  libsystem_symptoms.dylib (2169.120.7) <F5029F5C-1BF3-31C7-892E-BC8606AC829E> /usr/lib/system/libsystem_symptoms.dylib
+       0x1929a3000 -        0x1929db257  libsystem_containermanager.dylib (725.120.2) <518BE44D-AA31-31E6-B44B-A37AD5E47040> /usr/lib/system/libsystem_containermanager.dylib
+       0x193db4000 -        0x193db85d7  libsystem_configuration.dylib (1405.120.5) <0F7BBC1C-3D50-3E59-A31F-E4672A80BCEB> /usr/lib/system/libsystem_configuration.dylib
+       0x193db9000 -        0x193dbf8cf  libsystem_sandbox.dylib (2680.120.12) <EC3A75EA-44C0-3A0B-9BF7-71C117B0A9C6> /usr/lib/system/libsystem_sandbox.dylib
+       0x195413000 -        0x1954161fb  libquarantine.dylib (196.120.2) <5849009B-ACA3-3796-94C4-BBDF8D300EBA> /usr/lib/system/libquarantine.dylib
+       0x195bb2000 -        0x195bb8d03  libsystem_coreservices.dylib (191.4.5) <9576143B-C303-35A3-BA63-1FD06EDA2BB1> /usr/lib/system/libsystem_coreservices.dylib
+       0x19613d000 -        0x19617aa77  libsystem_m.dylib (3312.100.1) <A7E0863C-101A-31A0-922B-ED9B02626151> /usr/lib/system/libsystem_m.dylib
+       0x19617c000 -        0x19617f527  libmacho.dylib (1378) <755441B4-C034-3E3A-8E3C-F424FBB28261> /usr/lib/system/libmacho.dylib
+       0x196199000 -        0x1961a63a7  libcommonCrypto.dylib (600035) <CE357BB1-2D49-37CC-9FFE-D093936B1475> /usr/lib/system/libcommonCrypto.dylib
+       0x1961a7000 -        0x1961b0ca3  libunwind.dylib (2100.2) <FC8F0C4E-6FB0-3E27-ABEF-B0FA720CD5E4> /usr/lib/system/libunwind.dylib
+       0x1961b9000 -        0x1961c37ff  libcopyfile.dylib (240) <8ACFAC7A-88E9-3EF4-853F-A9140FF110E5> /usr/lib/system/libcopyfile.dylib
+       0x1961c4000 -        0x1961c7987  libcompiler_rt.dylib (103.3) <AA79151F-C19D-3C7C-92F8-B10F04D82C1C> /usr/lib/system/libcompiler_rt.dylib
+       0x1961c8000 -        0x1961cc78b  libsystem_collections.dylib (1752.120.2) <72DB5BE7-EF78-37D0-8AAD-53E37CFE4287> /usr/lib/system/libsystem_collections.dylib
+       0x1961cd000 -        0x1961d04cf  libsystem_secinit.dylib (168.100.7) <E525C566-CDA4-3D99-B12B-1615FD54A1F3> /usr/lib/system/libsystem_secinit.dylib
+       0x1961d1000 -        0x1961d3bf7  libremovefile.dylib (85.100.6) <635E661D-80A7-340D-A165-3F7D318FDFC9> /usr/lib/system/libremovefile.dylib
+       0x1961d4000 -        0x1961d4f27  libkeymgr.dylib (31) <8C08891A-DF1C-3DCC-AB64-4742FD6BE9BA> /usr/lib/system/libkeymgr.dylib
+       0x1961d5000 -        0x1961dde37  libsystem_dnssd.dylib (2881.120.11) <6F45DF3F-233B-3BC3-BA8C-B43E7DA884BF> /usr/lib/system/libsystem_dnssd.dylib
+       0x1961de000 -        0x1961e309b  libcache.dylib (95) <189B576E-6176-3F82-8FA4-5914B0BEAEE7> /usr/lib/system/libcache.dylib
+       0x1961e4000 -        0x1961e5ce3  libSystem.B.dylib (1356) <D65E4112-C151-3FF8-BEB7-4841436012D6> /usr/lib/libSystem.B.dylib
+       0x28941b000 -        0x289422349  libRosetta.dylib (367.9) <8651ED4F-6506-3788-B56B-32EE414A85CA> /usr/lib/libRosetta.dylib
+       0x28b038000 -        0x28b03ba4b  libsystem_darwindirectory.dylib (122) <CF277A2C-C818-3F16-8B3F-3C7B39FCD164> /usr/lib/system/libsystem_darwindirectory.dylib
+       0x28b03c000 -        0x28b0455d3  libsystem_eligibility.dylib (319.121.1) <DDAC0531-0262-3DDC-8EC8-80EB9438847A> /usr/lib/system/libsystem_eligibility.dylib
+       0x28b046000 -        0x28b04d88b  libsystem_sanitizers.dylib (26.1) <44C4234F-8B2D-38D3-A774-B4B3C75AF3A7> /usr/lib/system/libsystem_sanitizers.dylib
+       0x28b04e000 -        0x28b04ebb7  libsystem_trial.dylib (474.2.18.2) <68C583BA-AFF5-3916-86AE-6E38BFEF98D6> /usr/lib/system/libsystem_trial.dylib

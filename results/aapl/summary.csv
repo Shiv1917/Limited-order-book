@@ -1,0 +1,6 @@
+version,mps_median,p50_ns,p99_ns,p999_ns,max_ns
+"Baseline (std::map + std::list)",11.1624,83.3333,208.333,250,395125
+"+ flat levels (intrusive lists, new/delete)",18.2687,83.3333,125,208.333,23500
+"+ pool allocator",26.7673,41.6667,166.667,208.333,33375
+"+ flat hash map",34.023,41.6667,166.667,250,32541.7
+"+ cache tuning (32B order)",41.5709,41.6667,166.667,208.333,19916.7

@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    name: ${{ matrix.os }} / ${{ matrix.cxx }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, cxx: g++-14 }
+          - { os: ubuntu-24.04, cxx: clang++-18 }
+          - { os: macos-14, cxx: clang++ }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ninja
+        run: ${{ runner.os == 'Linux' && 'sudo apt-get update && sudo apt-get install -y ninja-build' || 'brew install ninja' }}
+      - name: Configure
+        # -march=native is off in CI: runners vary and results are not benchmarks.
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=${{ matrix.cxx }} -DOB_NATIVE=OFF
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure -j4
+      - name: Longer differential fuzz
+        run: ./build/ob_fuzz_diff --seeds 200 --messages 20000
+      - name: Benchmark smoke run
+        run: ./build/ob_bench --synthetic 200000 --repeats 1
+
+  sanitizers:
+    name: sanitizers / ${{ matrix.san }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        san: [ "address,undefined", "thread" ]
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_COMPILER=clang++-18 -DOB_NATIVE=OFF -DOB_SANITIZE=${{ matrix.san }}
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        env:
+          ASAN_OPTIONS: detect_leaks=1:abort_on_error=1
+          UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+          TSAN_OPTIONS: halt_on_error=1
+        run: ctest --test-dir build --output-on-failure -j4
+      - name: Fuzz under sanitizer
+        if: matrix.san != 'thread'
+        run: ./build/ob_fuzz_diff --seeds 40 --messages 20000
+
+  libfuzzer:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - name: Build
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_COMPILER=clang++-18 \
+            -DOB_NATIVE=OFF -DOB_LIBFUZZER=ON -DOB_SANITIZE=address,undefined -DOB_BUILD_BENCH=OFF
+          cmake --build build --target ob_libfuzzer
+      - name: Fuzz for 2 minutes
+        run: ./build/ob_libfuzzer -max_total_time=120 -print_final_stats=1
+
+  python:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build && pip install numpy matplotlib
+      - name: Build module
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DOB_NATIVE=OFF -DOB_BUILD_PYTHON=ON \
+            -DOB_BUILD_TESTS=OFF -DOB_BUILD_BENCH=OFF -DPython_EXECUTABLE=$(which python)
+          cmake --build build --target pyob
+      - name: Smoke test
+        run: PYTHONPATH=build python python/tests/test_pyob.py

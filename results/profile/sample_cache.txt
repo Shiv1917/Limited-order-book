@@ -1,0 +1,311 @@
+Analysis of sampling ob_bench (pid 82959) every 1 millisecond
+Process:         ob_bench [82959]
+Path:            /Users/USER/Documents/*/ob_bench
+Load Address:    0x100768000
+Identifier:      ob_bench
+Version:         0
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  zsh [82947]
+Target Type:     live task
+
+Date/Time:       2026-11-02 10:54:44.595 +0000
+Launch Time:     2026-11-02 10:54:43.055 +0000
+OS Version:      macOS 26.5.1 (25F80)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         84.0M
+Physical footprint (peak):  84.0M
+Idle exit:                  untracked
+----
+
+Call graph:
+    3821 Thread_2713998   DispatchQueue_1: com.apple.main-thread  (serial)
+      3821 start  (in dyld) + 6992  [0x185fd7e00]
+        1644 main  (in ob_bench) + 12300,12484,...  [0x10076be0c,0x10076bec4,...]  bench_main.cpp:177
+        458 main  (in ob_bench) + 11724  [0x10076bbcc]  bench_main.cpp:177
+        + 38 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 88  [0x10077f16c]  book.hpp:287
+        + 37 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 328  [0x10077b150]  book.hpp:228
+        + ! 8 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 80,52  [0x10077ed3c,0x10077ed20]  book.hpp:251
+        + ! 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 164,1028  [0x10077ed90,0x10077f0f0]  book.hpp:0
+        + ! 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 100  [0x10077ed50]  book.hpp:253
+        + ! 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0,28  [0x10077ecec,0x10077ed08]  book.hpp:250
+        + ! 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 120,360,...  [0x10077ed64,0x10077ee54,...]  book.hpp:268
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 172  [0x10077ed98]  book.hpp:255
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 284  [0x10077ee08]  book.hpp:264
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 296  [0x10077ee14]  book.hpp:265
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 752  [0x10077efdc]  book.hpp:272
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 208  [0x10077edbc]  book.hpp:259
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 152  [0x10077ed84]  book.hpp:269
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 804  [0x10077f010]  book.hpp:273
+        + 36 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 144  [0x10077b290]  book.hpp:228
+        + ! 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 112  [0x10077f368]  book.hpp:252
+        + ! 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 52,56,...  [0x10077f32c,0x10077f330,...]  book.hpp:251
+        + ! 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 124  [0x10077f374]  book.hpp:253
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 188,1076  [0x10077f3b4,0x10077f72c]  book.hpp:0
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0,28  [0x10077f2f8,0x10077f314]  book.hpp:250
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 196  [0x10077f3bc]  book.hpp:255
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 232  [0x10077f3e0]  book.hpp:259
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 296  [0x10077f420]  book.hpp:260
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 920,996  [0x10077f690,0x10077f6dc]  book.hpp:274
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 280  [0x10077f410]  book.hpp:261
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 376  [0x10077f470]  book.hpp:268
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 788  [0x10077f60c]  book.hpp:272
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 840  [0x10077f640]  book.hpp:273
+        + 22 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 320  [0x10077999c]  book.hpp:174
+        + 21 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 244,292,...  [0x10077f208,0x10077f238,...]  book.hpp:309
+        + 19 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 344,308  [0x1007799b4,0x100779990]  book.hpp:173
+        + 19 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 92  [0x10077f7ac]  book.hpp:287
+        + 18 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 224,268,...  [0x10077993c,0x100779968,...]  book.hpp:172
+        + 17 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 116  [0x10077f7c4]  book.hpp:301
+        + 15 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 300  [0x100779988]  book.hpp:0
+        + 13 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 28  [0x100779878]  book.hpp:165
+        + 13 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 40,72,...  [0x100779884,0x1007798a4,...]  book.hpp:168
+        + 13 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 88  [0x10077f7a8]  book.hpp:297
+        + 12 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 124,136,...  [0x1007798d8,0x1007798e4,...]  book.hpp:170
+        + 12 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 96,92  [0x10077f174,0x10077f170]  book.hpp:298
+        + 11 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,12,...  [0x10077b030,0x10077b014,...]  book.hpp:225
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 112  [0x10077f184]  book.hpp:301
+        + 8 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 8,12,...  [0x10077b208,0x10077b20c,...]  book.hpp:225
+        + 8 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 248,256,...  [0x10077f848,0x10077f850,...]  book.hpp:309
+        + 7 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 4,0  [0x100782d8c,0x100782d88]
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,44  [0x10077b228,0x10077b22c]  book.hpp:226
+        + 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1096,1080,...  [0x10077f740,0x10077f730,...]  book.hpp:0
+        + 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 16  [0x10077f124]  book.hpp:283
+        + 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 72  [0x10077f15c]  book.hpp:296
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 84  [0x10077f168]  book.hpp:297
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 104  [0x10077f7b8]  book.hpp:299
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 144,164,...  [0x10077f7e0,0x10077f7f4,...]  book.hpp:302
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1048,1040,...  [0x10077f104,0x10077f0fc,...]  book.hpp:0
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 100  [0x10077f178]  book.hpp:299
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 116,160  [0x10077f188,0x10077f1b4]  book.hpp:302
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 180,196  [0x10077f1c8,0x10077f1d8]  book.hpp:304
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 200  [0x10077f1dc]  book.hpp:307
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 16,24,...  [0x10077f760,0x10077f768,...]  book.hpp:283
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 72  [0x10077f798]  book.hpp:286
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 76,84  [0x10077f79c,0x10077f7a4]  book.hpp:296
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 44  [0x10077b034]  book.hpp:226
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 332  [0x10077b154]  book.hpp:230
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 460  [0x10077b1d4]  book.hpp:231
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 240,232  [0x10077b2f0,0x10077b2e8]  book.hpp:231
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1060  [0x10077f110]  book.hpp:277
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 8  [0x10077f758]  book.hpp:281
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 204  [0x10077f81c]  book.hpp:307
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 368  [0x10077f8c0]  book.hpp:310
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1104,1108  [0x10077f748,0x10077f74c]  book.hpp:277
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 200  [0x10077f818]  book.hpp:304
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 388  [0x10077b18c]  book.hpp:232
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 144  [0x10077b290]  book.hpp:229
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 148  [0x10077b294]  book.hpp:230
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 16  [0x10077986c]  book.hpp:164
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 12  [0x10077f120]  book.hpp:281
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 68  [0x10077f158]  book.hpp:286
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 60  [0x10077f150]  book.hpp:288
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 364  [0x10077f280]  book.hpp:310
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 56  [0x10077f788]  book.hpp:285
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 224  [0x10077f830]  book.hpp:306
+        287 main  (in ob_bench) + 12768  [0x10076bfe0]  bench_main.cpp:177
+        + 32 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 328  [0x10077b150]  book.hpp:228
+        + ! 14 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 80  [0x10077ed3c]  book.hpp:251
+        + ! 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0,28  [0x10077ecec,0x10077ed08]  book.hpp:250
+        + ! 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 164  [0x10077ed90]  book.hpp:0
+        + ! 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 100  [0x10077ed50]  book.hpp:253
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 172  [0x10077ed98]  book.hpp:255
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 256  [0x10077edec]  book.hpp:261
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 312  [0x10077ee24]  book.hpp:266
+        + 26 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 320  [0x10077999c]  book.hpp:174
+        + 22 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 144  [0x10077b290]  book.hpp:228
+        + ! 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 112  [0x10077f368]  book.hpp:252
+        + ! 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 320  [0x10077f438]  book.hpp:265
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 188  [0x10077f3b4]  book.hpp:0
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 72  [0x10077f340]  book.hpp:251
+        + ! 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 408,504  [0x10077f490,0x10077f4f0]  book.hpp:268
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 0  [0x10077f2f8]  book.hpp:250
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 124  [0x10077f374]  book.hpp:253
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 196  [0x10077f3bc]  book.hpp:255
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 232  [0x10077f3e0]  book.hpp:259
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 296  [0x10077f420]  book.hpp:260
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 308  [0x10077f42c]  book.hpp:264
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 792  [0x10077f610]  book.hpp:272
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 840  [0x10077f640]  book.hpp:273
+        + 22 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 344  [0x1007799b4]  book.hpp:173
+        + 17 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 124,136,...  [0x1007798d8,0x1007798e4,...]  book.hpp:170
+        + 16 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 112  [0x10077f184]  book.hpp:301
+        + 12 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 116  [0x10077f7c4]  book.hpp:301
+        + 12 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 248,296,...  [0x10077f848,0x10077f878,...]  book.hpp:309
+        + 10 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,0,...  [0x10077b030,0x10077b008,...]  book.hpp:225
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 300  [0x100779988]  book.hpp:0
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 268,224,...  [0x100779968,0x10077993c,...]  book.hpp:172
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 160,140,...  [0x10077f1b4,0x10077f1a0,...]  book.hpp:302
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 292,244,...  [0x10077f238,0x10077f208,...]  book.hpp:309
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 100  [0x10077f178]  book.hpp:299
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 0,8,...  [0x10077b200,0x10077b208,...]  book.hpp:225
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 16,24  [0x10077f124,0x10077f12c]  book.hpp:283
+        + 5 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 16  [0x10077f760]  book.hpp:283
+        + 4 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 4,0  [0x100782d8c,0x100782d88]
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 332  [0x10077b154]  book.hpp:230
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1048  [0x10077f104]  book.hpp:0
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 40  [0x100779884]  book.hpp:168
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 76  [0x10077f79c]  book.hpp:296
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 40,44  [0x10077b228,0x10077b22c]  book.hpp:226
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 12  [0x100779868]  book.hpp:164
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 28  [0x100779878]  book.hpp:165
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 88  [0x10077f16c]  book.hpp:287
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 8,12  [0x10077f758,0x10077f75c]  book.hpp:281
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 120,144,...  [0x10077f7c8,0x10077f7e0,...]  book.hpp:302
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1096  [0x10077f740]  book.hpp:0
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 72  [0x10077f15c]  book.hpp:296
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 364  [0x10077f280]  book.hpp:310
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 92  [0x10077f7ac]  book.hpp:287
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 104  [0x10077f7b8]  book.hpp:299
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 184,200  [0x10077f808,0x10077f818]  book.hpp:304
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 204  [0x10077f81c]  book.hpp:307
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 44  [0x10077b034]  book.hpp:226
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 388  [0x10077b18c]  book.hpp:232
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 148  [0x10077b294]  book.hpp:230
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench) + 1060  [0x10077f110]  book.hpp:277
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 8  [0x10077f11c]  book.hpp:281
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 180  [0x10077f1c8]  book.hpp:304
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 220  [0x10077f1f0]  book.hpp:306
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 368  [0x10077f8c0]  book.hpp:310
+        270 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 352,348,...  [0x1007799bc,0x1007799b8,...]  book.hpp:173
+        260 main  (in ob_bench) + 12272  [0x10076bdf0]  bench_main.cpp:177
+        + 97 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 108  [0x100779590]  book.hpp:72
+        + ! 97 std::vector<ob::OrderPacked>::__append(unsigned long)  (in ob_bench) + 208,216  [0x10077ec78,0x10077ec80]  vector:1172
+        + 79 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 360  [0x10077968c]  book.hpp:72
+        + ! 79 ob::FlatIdMap::rehash(unsigned long)  (in ob_bench) + 60  [0x10077bd50]  flat_map.hpp:102
+        + !   79 std::vector<ob::FlatIdMap::Slot>::assign(unsigned long, ob::FlatIdMap::Slot const&)  (in ob_bench) + 156  [0x10077be80]  vector:1405
+        + 70 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 232,244,...  [0x10077960c,0x100779618,...]  book.hpp:72
+        + 10 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 516  [0x100779728]  book.hpp:74
+        + ! 10 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208,212  [0x100772f1c,0x100772f20]  vector:1405
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 464  [0x1007796f4]  book.hpp:74
+        +   4 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208,212,...  [0x100772f1c,0x100772f20,...]  vector:1405
+        250 main  (in ob_bench) + 11372  [0x10076ba6c]  bench_main.cpp:177
+        + 96 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 108  [0x100779590]  book.hpp:72
+        + ! 96 std::vector<ob::OrderPacked>::__append(unsigned long)  (in ob_bench) + 208,216  [0x10077ec78,0x10077ec80]  vector:1172
+        + 77 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 232,244,...  [0x10077960c,0x100779618,...]  book.hpp:72
+        + 62 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 360  [0x10077968c]  book.hpp:72
+        + ! 62 ob::FlatIdMap::rehash(unsigned long)  (in ob_bench) + 60  [0x10077bd50]  flat_map.hpp:102
+        + !   62 std::vector<ob::FlatIdMap::Slot>::assign(unsigned long, ob::FlatIdMap::Slot const&)  (in ob_bench) + 156  [0x10077be80]  vector:1405
+        + 8 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 516  [0x100779728]  book.hpp:74
+        + ! 8 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208  [0x100772f1c]  vector:1405
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench) + 464  [0x1007796f4]  book.hpp:74
+        +   7 std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench) + 208,216  [0x100772f1c,0x100772f24]  vector:1405
+        219 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 328,324,...  [0x1007799a4,0x1007799a0,...]  book.hpp:174
+        217 main  (in ob_bench) + 11612  [0x10076bb5c]  bench_main.cpp:177
+        + 48 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 68,56,...  [0x10077b388,0x10077b37c,...]  book.hpp:317
+        + 37 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 96  [0x10077b3a4]  book.hpp:318
+        + 36 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 84,88  [0x10077b398,0x10077b39c]  book.hpp:319
+        + 26 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 388,340,...  [0x10077b4c8,0x10077b498,...]  book.hpp:327
+        + 14 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 236,268,...  [0x10077b430,0x10077b450,...]  book.hpp:0
+        + 12 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 252  [0x10077b440]  book.hpp:325
+        + ! 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 88,8,...  [0x10077a310,0x10077a2c0,...]  book.hpp:149
+        + ! 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 212  [0x10077a38c]  book.hpp:153
+        + ! 2 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 0,4  [0x100782df4,0x100782df8]
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 0  [0x10077a2b8]  book.hpp:148
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 132  [0x10077a33c]  book.hpp:152
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 328  [0x10077a400]  level_bitset.hpp:0
+        + 9 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 4  [0x100782d98]
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 108  [0x10077b3b0]  book.hpp:320
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 140  [0x10077b3d0]  book.hpp:323
+        + 7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 424  [0x10077b4ec]  book.hpp:329
+        + 6 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 200,156,...  [0x10077b40c,0x10077b3e0,...]  book.hpp:324
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 420,408,...  [0x10077b4e8,0x10077b4dc,...]  book.hpp:328
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 0  [0x10077b344]  book.hpp:313
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 32  [0x10077b364]  book.hpp:315
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 112  [0x10077b3b4]  book.hpp:321
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 224  [0x10077b424]  book.hpp:325
+        151 main  (in ob_bench) + 12656  [0x10076bf70]  bench_main.cpp:177
+        + 34 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 84  [0x10077b398]  book.hpp:319
+        + 28 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 96  [0x10077b3a4]  book.hpp:318
+        + 27 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 308,500,...  [0x10077b478,0x10077b538,...]  book.hpp:327
+        + 25 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 68,60,...  [0x10077b388,0x10077b380,...]  book.hpp:317
+        + 9 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 140  [0x10077b3d0]  book.hpp:323
+        + 8 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 236,268  [0x10077b430,0x10077b450]  book.hpp:0
+        + 6 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 4  [0x100782d98]
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 108  [0x10077b3b0]  book.hpp:320
+        + 4 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 252  [0x10077b440]  book.hpp:325
+        + ! 2 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 4  [0x100782df8]
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 0  [0x10077a2b8]  book.hpp:148
+        + ! 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench) + 332  [0x10077a404]  book.hpp:155
+        + 3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 420  [0x10077b4e8]  book.hpp:328
+        + 2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 180,200  [0x10077b3f8,0x10077b40c]  book.hpp:324
+        + 1 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 112  [0x10077b3b4]  book.hpp:321
+        18 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench) + 436,432,...  [0x10077b4f8,0x10077b4f4,...]  book.hpp:329
+        18 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 372,368  [0x10077f288,0x10077f284]  book.hpp:310
+        14 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench) + 372,376  [0x10077f8c4,0x10077f8c8]  book.hpp:310
+        7 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 472,464,...  [0x10077b1e0,0x10077b1d8,...]  book.hpp:231
+        3 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 248,244  [0x10077b2f8,0x10077b2f4]  book.hpp:231
+        2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 396,400  [0x10077b194,0x10077b198]  book.hpp:232
+        2 ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench) + 112,116  [0x10077b270,0x10077b274]  book.hpp:232
+        1 main  (in ob_bench) + 11420  [0x10076ba9c]  bench_main.cpp:177
+          1 DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_modify(ob::Message const&, ob::EventBuffer&)  (in ob_bench) + 4  [0x100782dbc]
+
+Total number in stack (recursive counted multiple, when >=5):
+
+Sort by top of stack, same collapsed (when >= 5):
+        main  (in ob_bench)        1644
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench)        695
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench)        355
+        std::vector<ob::OrderPacked>::__append(unsigned long)  (in ob_bench)        193
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)0>(unsigned long long, unsigned int, unsigned int)  (in ob_bench)        191
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::rest<(ob::Side)1>(unsigned long long, unsigned int, unsigned int)  (in ob_bench)        154
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::BasicBook(ob::BookConfig const&)  (in ob_bench)        147
+        std::vector<ob::FlatIdMap::Slot>::assign(unsigned long, ob::FlatIdMap::Slot const&)  (in ob_bench)        141
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench)        81
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::match<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::EventBuffer&)  (in ob_bench)        68
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)0>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench)        46
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::execute<(ob::Side)1>(unsigned long long, unsigned int, unsigned int, ob::TimeInForce, long long, ob::EventBuffer&)  (in ob_bench)        34
+        std::vector<ob::Level>::assign(unsigned long, ob::Level const&)  (in ob_bench)        29
+        DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::remove(unsigned int)  (in ob_bench)        15
+        ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::next_level(ob::Side, unsigned int) const  (in ob_bench)        12
+        DYLD-STUB$$ob::BasicBook<ob::OrderPacked, ob::PoolStorage, ob::FlatIdMap>::on_add(ob::Message const&, ob::EventBuffer&)  (in ob_bench)        11
+
+Binary Images:
+       0x100768000 -        0x1007848db +ob_bench (0) <CE7594A2-86CF-3802-AD82-692DF88125FD> /Users/*/Documents/*/ob_bench
+       0x185f30000 -        0x185f82b4b  libobjc.A.dylib (951.7) <FF1D8AE4-ABEF-35F1-A30A-1183B9CB414F> /usr/lib/libobjc.A.dylib
+       0x185f83000 -        0x185fb7d07  libdyld.dylib (1378) <B147D877-D0C2-388F-B38D-D3132E39905F> /usr/lib/system/libdyld.dylib
+       0x185fb8000 -        0x18605e217  dyld (1.0.0 - 1378) <A237EF81-B68B-37BA-A165-92C965529534> /usr/lib/dyld
+       0x18605f000 -        0x186062228  libsystem_blocks.dylib (96) <CC947089-488D-316B-A9C7-46DEC0F73145> /usr/lib/system/libsystem_blocks.dylib
+       0x186063000 -        0x1860b755f  libxpc.dylib (3102.120.13) <C40FCAE8-7A17-3D82-87CB-3DA4802ADEF1> /usr/lib/system/libxpc.dylib
+       0x1860b8000 -        0x1860d89ff  libsystem_trace.dylib (1861.120.4) <D0FABAB3-5AE7-3F10-8C62-60CBF5D70850> /usr/lib/system/libsystem_trace.dylib
+       0x1860d9000 -        0x1861875f7  libcorecrypto.dylib (1922.121.1) <A01A158D-6FE7-3B1C-A2C4-6BCB90D7314A> /usr/lib/system/libcorecrypto.dylib
+       0x186188000 -        0x1861d81d7  libsystem_malloc.dylib (812.100.31) <5FAE4807-4D2B-3A95-A63A-DD96D3DA11B4> /usr/lib/system/libsystem_malloc.dylib
+       0x1861d9000 -        0x18622023f  libdispatch.dylib (1542.100.32) <F071EFE4-299F-3089-ACC4-0025B8FFB52A> /usr/lib/system/libdispatch.dylib
+       0x186221000 -        0x186223ffb  libsystem_featureflags.dylib (103) <71FCFFBD-85F8-3365-AFE0-BECEA4369122> /usr/lib/system/libsystem_featureflags.dylib
+       0x186224000 -        0x1862a4d9f  libsystem_c.dylib (1752.120.2) <694B7881-1BF3-3D0F-8F19-B50AE4E8EF8A> /usr/lib/system/libsystem_c.dylib
+       0x1862a5000 -        0x186335ae7  libc++.1.dylib (2100.43) <5013C0F8-84A9-3B56-9FEB-C353816A750F> /usr/lib/libc++.1.dylib
+       0x186336000 -        0x18635075f  libc++abi.dylib (2100.43) <E482D257-E5A0-3816-BD97-7B39342958DA> /usr/lib/libc++abi.dylib
+       0x186351000 -        0x18638e2af  libsystem_kernel.dylib (12377.121.6) <CC1CF985-BC65-3725-809F-4C1E36B8F4BA> /usr/lib/system/libsystem_kernel.dylib
+       0x18638f000 -        0x18639bb3b  libsystem_pthread.dylib (539.100.4) <4F33683C-18C8-39A1-800B-2E3BD43BCC13> /usr/lib/system/libsystem_pthread.dylib
+       0x18639c000 -        0x1863a4963  libsystem_platform.dylib (375.120.2) <160FD864-8D15-36FC-9E97-9725388CFAFE> /usr/lib/system/libsystem_platform.dylib
+       0x1863a5000 -        0x1863d46eb  libsystem_info.dylib (600) <3D62F2D9-F516-31BF-83C7-E203D872300B> /usr/lib/system/libsystem_info.dylib
+       0x18a36c000 -        0x18a375e5f  libsystem_darwin.dylib (1752.120.2) <8858F025-745A-388E-9544-080781CC9A69> /usr/lib/system/libsystem_darwin.dylib
+       0x18a7d7000 -        0x18a7e91b6  libsystem_notify.dylib (348.120.4) <64D76451-1E0C-369B-A631-54DA3140E083> /usr/lib/system/libsystem_notify.dylib
+       0x18caa4000 -        0x18cabef7b  libsystem_networkextension.dylib (2226.121.1) <0331EE20-A1FB-3C0D-990A-F65939CFF505> /usr/lib/system/libsystem_networkextension.dylib
+       0x18cb41000 -        0x18cb58fdf  libsystem_asl.dylib (406) <F40838DF-2F15-3F62-970F-DEE25706BF1B> /usr/lib/system/libsystem_asl.dylib
+       0x18e6ff000 -        0x18e707387  libsystem_symptoms.dylib (2169.120.7) <F5029F5C-1BF3-31C7-892E-BC8606AC829E> /usr/lib/system/libsystem_symptoms.dylib
+       0x1929a3000 -        0x1929db257  libsystem_containermanager.dylib (725.120.2) <518BE44D-AA31-31E6-B44B-A37AD5E47040> /usr/lib/system/libsystem_containermanager.dylib
+       0x193db4000 -        0x193db85d7  libsystem_configuration.dylib (1405.120.5) <0F7BBC1C-3D50-3E59-A31F-E4672A80BCEB> /usr/lib/system/libsystem_configuration.dylib
+       0x193db9000 -        0x193dbf8cf  libsystem_sandbox.dylib (2680.120.12) <EC3A75EA-44C0-3A0B-9BF7-71C117B0A9C6> /usr/lib/system/libsystem_sandbox.dylib
+       0x195413000 -        0x1954161fb  libquarantine.dylib (196.120.2) <5849009B-ACA3-3796-94C4-BBDF8D300EBA> /usr/lib/system/libquarantine.dylib
+       0x195bb2000 -        0x195bb8d03  libsystem_coreservices.dylib (191.4.5) <9576143B-C303-35A3-BA63-1FD06EDA2BB1> /usr/lib/system/libsystem_coreservices.dylib
+       0x19613d000 -        0x19617aa77  libsystem_m.dylib (3312.100.1) <A7E0863C-101A-31A0-922B-ED9B02626151> /usr/lib/system/libsystem_m.dylib
+       0x19617c000 -        0x19617f527  libmacho.dylib (1378) <755441B4-C034-3E3A-8E3C-F424FBB28261> /usr/lib/system/libmacho.dylib
+       0x196199000 -        0x1961a63a7  libcommonCrypto.dylib (600035) <CE357BB1-2D49-37CC-9FFE-D093936B1475> /usr/lib/system/libcommonCrypto.dylib
+       0x1961a7000 -        0x1961b0ca3  libunwind.dylib (2100.2) <FC8F0C4E-6FB0-3E27-ABEF-B0FA720CD5E4> /usr/lib/system/libunwind.dylib
+       0x1961b9000 -        0x1961c37ff  libcopyfile.dylib (240) <8ACFAC7A-88E9-3EF4-853F-A9140FF110E5> /usr/lib/system/libcopyfile.dylib
+       0x1961c4000 -        0x1961c7987  libcompiler_rt.dylib (103.3) <AA79151F-C19D-3C7C-92F8-B10F04D82C1C> /usr/lib/system/libcompiler_rt.dylib
+       0x1961c8000 -        0x1961cc78b  libsystem_collections.dylib (1752.120.2) <72DB5BE7-EF78-37D0-8AAD-53E37CFE4287> /usr/lib/system/libsystem_collections.dylib
+       0x1961cd000 -        0x1961d04cf  libsystem_secinit.dylib (168.100.7) <E525C566-CDA4-3D99-B12B-1615FD54A1F3> /usr/lib/system/libsystem_secinit.dylib
+       0x1961d1000 -        0x1961d3bf7  libremovefile.dylib (85.100.6) <635E661D-80A7-340D-A165-3F7D318FDFC9> /usr/lib/system/libremovefile.dylib
+       0x1961d4000 -        0x1961d4f27  libkeymgr.dylib (31) <8C08891A-DF1C-3DCC-AB64-4742FD6BE9BA> /usr/lib/system/libkeymgr.dylib
+       0x1961d5000 -        0x1961dde37  libsystem_dnssd.dylib (2881.120.11) <6F45DF3F-233B-3BC3-BA8C-B43E7DA884BF> /usr/lib/system/libsystem_dnssd.dylib
+       0x1961de000 -        0x1961e309b  libcache.dylib (95) <189B576E-6176-3F82-8FA4-5914B0BEAEE7> /usr/lib/system/libcache.dylib
+       0x1961e4000 -        0x1961e5ce3  libSystem.B.dylib (1356) <D65E4112-C151-3FF8-BEB7-4841436012D6> /usr/lib/libSystem.B.dylib
+       0x28941b000 -        0x289422349  libRosetta.dylib (367.9) <8651ED4F-6506-3788-B56B-32EE414A85CA> /usr/lib/libRosetta.dylib
+       0x28b038000 -        0x28b03ba4b  libsystem_darwindirectory.dylib (122) <CF277A2C-C818-3F16-8B3F-3C7B39FCD164> /usr/lib/system/libsystem_darwindirectory.dylib
+       0x28b03c000 -        0x28b0455d3  libsystem_eligibility.dylib (319.121.1) <DDAC0531-0262-3DDC-8EC8-80EB9438847A> /usr/lib/system/libsystem_eligibility.dylib
+       0x28b046000 -        0x28b04d88b  libsystem_sanitizers.dylib (26.1) <44C4234F-8B2D-38D3-A774-B4B3C75AF3A7> /usr/lib/system/libsystem_sanitizers.dylib
+       0x28b04e000 -        0x28b04ebb7  libsystem_trial.dylib (474.2.18.2) <68C583BA-AFF5-3916-86AE-6E38BFEF98D6> /usr/lib/system/libsystem_trial.dylib

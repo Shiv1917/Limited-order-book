@@ -1,0 +1,2 @@
+ok: 1000 seeds, 20000000 messages, all books identical
+coverage: trades=3557460 new=11039281 modified=1457345 user-cancel=6562284 unfilled=622176 fok-unfillable=245361 invalid-qty=172182 invalid-price=180741 duplicate-id=76868 unknown-order=511299
