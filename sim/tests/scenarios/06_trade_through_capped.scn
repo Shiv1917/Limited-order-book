@@ -1,0 +1,10 @@
+# Trade-through fills are capped at the observed trade size (20 < 30).
+[config]
+{"strategy": {"actions": [{"t": "34200.000000003", "side": "buy", "price": 100100, "qty": 30}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100300,-1
+34200.000000004,4,1,20,100000,1
+[expected]
+34200.000000003,0,acked,buy,100100,30,
+34200.000000004,0,partial,buy,100100,20,maker

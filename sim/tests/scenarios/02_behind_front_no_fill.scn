@@ -1,0 +1,14 @@
+# Executions of the order ahead of us never fill us; one behind us does.
+[config]
+{"strategy": {"actions": [{"t": "34200.000000002", "side": "buy", "price": 100000, "qty": 20}]}}
+[messages]
+34200.000000001,1,1,50,100000,1
+34200.000000003,4,1,30,100000,1
+34200.000000004,4,1,20,100000,1
+34200.000000005,1,4,40,100000,1
+34200.000000006,4,4,10,100000,1
+[expected]
+34200.000000002,0,acked,buy,100000,20,
+34200.000000006,0,partial,buy,100000,10,maker
+[checks]
+position=10

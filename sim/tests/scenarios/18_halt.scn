@@ -1,0 +1,18 @@
+# A halt message pulls our resting order and blocks new ones until the next
+# ordinary message.
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000003", "side": "buy", "price": 100000, "qty": 10},
+  {"t": "34200.000000005", "side": "buy", "price": 100000, "qty": 10},
+  {"t": "34200.000000007", "side": "buy", "price": 100000, "qty": 10}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100200,-1
+34200.000000004,7,0,0,-1,-1
+34200.000000006,1,3,10,100000,1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,acked,buy,100000,10,
+34200.000000004,0,cancelled,buy,100000,10,halt
+34200.000000005,1,rejected,buy,100000,10,halted
+34200.000000007,2,acked,buy,100000,10,

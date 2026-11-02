@@ -45,16 +45,29 @@ struct OrderLoose {
 // Tuned layout: only what matching needs, 32 bytes, 32-byte aligned so an
 // order never straddles a cache line and two orders share each line. Price is
 // implied by the level index; cold data (timestamps, owner) lives elsewhere.
+// `seq` is the arrival sequence number (used by the simulator for exact queue
+// position); it lives in what was padding, so the order is still 32 bytes.
 struct alignas(32) OrderPacked {
     OrderId id = 0;
     std::uint32_t qty = 0;
     std::uint32_t next = kNil;
     std::uint32_t prev = kNil;
     std::uint32_t level = 0;
+    std::uint32_t seq = 0;
     Side side = Side::Buy;
 };
 static_assert(sizeof(OrderPacked) == 32);
 static_assert(sizeof(OrderLoose) == 80);
+
+// One resting order as seen by a read-only queue walk (simulator use).
+// `seq` is the arrival sequence number: a lower seq is further ahead in its
+// price level's FIFO. A price-reducing modify keeps seq; cancel/replace gets
+// a new one.
+struct QueueEntry {
+    OrderId id = 0;
+    Qty qty = 0;
+    std::uint64_t seq = 0;
+};
 
 struct Level {
     std::uint32_t head = kNil;
@@ -137,11 +150,54 @@ public:
     std::size_t order_count() const noexcept { return ids_.size(); }
     const PriceBand& band() const noexcept { return band_; }
 
+    // ---- read-only queue access (used by the simulator) --------------------
+    // Sequence number given to the most recent order to rest. An order that
+    // arrives now is behind every resting order with seq <= last_seq().
+    std::uint64_t last_seq() const noexcept { return seq_; }
+
+    std::optional<QueueEntry> queue_entry(OrderId id) const {
+        const auto i = ids_.find(id);
+        if (i == kNil) return std::nullopt;
+        return entry(pool_[i]);
+    }
+
+    // Total displayed quantity resting at `px` on side s (0 if empty/off-band).
+    std::uint64_t level_qty(Side s, Price px) const noexcept {
+        std::uint32_t b;
+        if (!band_.to_index(px, b)) return 0;
+        return levels_[idx(s)][b].total;
+    }
+
+    // Visits the orders at one price level in FIFO order. f(const QueueEntry&)
+    // returns false to stop early.
+    template <class F>
+    void for_each_in_level(Side s, Price px, F&& f) const {
+        std::uint32_t b;
+        if (!band_.to_index(px, b)) return;
+        for (auto i = levels_[idx(s)][b].head; i != kNil; i = pool_[i].next)
+            if (!f(entry(pool_[i]))) return;
+    }
+
+    // Visits levels on side s from the touch outwards without allocating.
+    // f(const LevelInfo&) returns false to stop early.
+    template <class F>
+    void for_each_level(Side s, F&& f) const {
+        for (auto b = best_[idx(s)]; b != kNil; b = next_level(s, b)) {
+            const Level& L = levels_[idx(s)][b];
+            if (!f(LevelInfo{band_.to_price(b), L.total, L.count})) return;
+        }
+    }
+
     // Full invariant check (debug/fuzz only; O(levels + orders)).
     bool validate(std::string* why = nullptr) const;
 
 private:
     static constexpr int idx(Side s) noexcept { return static_cast<int>(s); }
+
+    static QueueEntry entry(const Order& o) noexcept {
+        if constexpr (requires { o.timestamp; }) return QueueEntry{o.id, static_cast<Qty>(o.qty), o.timestamp};
+        else return QueueEntry{o.id, static_cast<Qty>(o.qty), o.seq};
+    }
 
     // Next level away from the touch on resting side s, strictly after `b`.
     std::uint32_t next_level(Side s, std::uint32_t b) const noexcept {
@@ -287,11 +343,16 @@ private:
         o.level = lvl;
         o.side = S;
         o.next = kNil;
+        ++seq_;
         if constexpr (requires { o.timestamp; }) {  // naive layout carries cold fields
             o.price = band_.to_price(lvl);
             o.orig_qty = qty;
-            o.timestamp = ++seq_;
+            o.timestamp = seq_;
             o.tif = TimeInForce::GTC;
+        } else {
+            // 32-bit in the packed layout; wraps after 2^32 rests (the simulator
+            // refuses to run past that point, see sim/exchange.hpp).
+            o.seq = static_cast<std::uint32_t>(seq_);
         }
         Level& L = levels_[si][lvl];
         o.prev = L.tail;

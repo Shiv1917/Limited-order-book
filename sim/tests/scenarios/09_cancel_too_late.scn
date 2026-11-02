@@ -1,0 +1,14 @@
+# The order fills before our cancel arrives: the cancel is rejected as too late.
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000002", "side": "buy", "price": 100000, "qty": 20},
+  {"t": "34200.000000005", "cancel": 0}]}}
+[messages]
+34200.000000001,1,1,10,100100,-1
+34200.000000003,1,4,40,100000,1
+34200.000000004,4,4,40,100000,1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000002,0,acked,buy,100000,20,
+34200.000000004,0,filled,buy,100000,20,maker
+34200.000000005,0,rejected,buy,0,0,too_late_to_cancel

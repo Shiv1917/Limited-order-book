@@ -1,0 +1,14 @@
+# A market buy walks the ask side.
+[config]
+{"strategy": {"actions": [{"t": "34200.000000004", "side": "buy", "qty": 60, "type": "market"}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,30,100100,-1
+34200.000000003,1,3,50,100200,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000004,0,acked,buy,0,60,
+34200.000000004,0,partial,buy,100100,30,taker
+34200.000000004,0,filled,buy,100200,30,taker
+[checks]
+position=60

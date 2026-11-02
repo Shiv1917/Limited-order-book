@@ -7,3 +7,4 @@ __pycache__/
 compile_commands.json
 .DS_Store
 results/raw/
+runs/

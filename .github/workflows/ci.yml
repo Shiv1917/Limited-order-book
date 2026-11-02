@@ -28,6 +28,12 @@ jobs:
         run: ctest --test-dir build --output-on-failure -j4
       - name: Longer differential fuzz
         run: ./build/ob_fuzz_diff --seeds 200 --messages 20000
+      - name: ob-sim scenario suite
+        run: ./build/sim/sim_tests "[scenario]"
+      - name: ob-sim determinism (two runs, compare hashes)
+        run: scripts/sim_determinism.sh sim/configs/fixture_mm.json build
+      - name: ob-sim check on the LOBSTER fixture
+        run: ./build/sim/ob-sim check --config sim/configs/fixture_mm.json
       - name: Benchmark smoke run
         run: ./build/ob_bench --synthetic 200000 --repeats 1
 
@@ -54,6 +60,8 @@ jobs:
       - name: Fuzz under sanitizer
         if: matrix.san != 'thread'
         run: ./build/ob_fuzz_diff --seeds 40 --messages 20000
+      - name: ob-sim run under sanitizer
+        run: ./build/sim/ob-sim run --config sim/configs/fixture_mm.json --out runs/san
 
   libfuzzer:
     runs-on: ubuntu-24.04
@@ -63,7 +71,7 @@ jobs:
       - name: Build
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_COMPILER=clang++-18 \
-            -DOB_NATIVE=OFF -DOB_LIBFUZZER=ON -DOB_SANITIZE=address,undefined -DOB_BUILD_BENCH=OFF
+            -DOB_NATIVE=OFF -DOB_LIBFUZZER=ON -DOB_SANITIZE=address,undefined -DOB_BUILD_BENCH=OFF -DOB_BUILD_SIM=OFF
           cmake --build build --target ob_libfuzzer
       - name: Fuzz for 2 minutes
         run: ./build/ob_libfuzzer -max_total_time=120 -print_final_stats=1
@@ -78,7 +86,7 @@ jobs:
       - name: Build module
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DOB_NATIVE=OFF -DOB_BUILD_PYTHON=ON \
-            -DOB_BUILD_TESTS=OFF -DOB_BUILD_BENCH=OFF -DPython_EXECUTABLE=$(which python)
+            -DOB_BUILD_TESTS=OFF -DOB_BUILD_BENCH=OFF -DOB_BUILD_SIM=OFF -DPython_EXECUTABLE=$(which python)
           cmake --build build --target pyob
       - name: Smoke test
         run: PYTHONPATH=build python python/tests/test_pyob.py

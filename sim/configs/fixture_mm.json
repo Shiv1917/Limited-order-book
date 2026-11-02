@@ -1,0 +1,9 @@
+{
+  "data": {"messages": "tests/data/TEST_message_2.csv", "book": "tests/data/TEST_orderbook_2.csv"},
+  "latency_ns": {"feed": 0, "proc": 0, "to_exchange": 0, "from_exchange": 0},
+  "risk": {"max_position": 500, "max_order_size": 100, "max_open_orders": 4},
+  "validate": {"book": true, "every": 1, "levels": 2},
+  "strategy": {"name": "market_maker", "quote_size": 10, "requote_min_ns": 0},
+  "seed": 42,
+  "out_dir": "runs/fixture_mm"
+}

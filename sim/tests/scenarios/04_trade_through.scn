@@ -1,0 +1,11 @@
+# We bid 10.01 inside the spread. A sell aggressor executes the 10.00 bid, so it
+# must have traded through our better price: we fill (capped at the trade size).
+[config]
+{"strategy": {"actions": [{"t": "34200.000000003", "side": "buy", "price": 100100, "qty": 30}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100300,-1
+34200.000000004,4,1,50,100000,1
+[expected]
+34200.000000003,0,acked,buy,100100,30,
+34200.000000004,0,filled,buy,100100,30,maker

@@ -1,0 +1,12 @@
+# Our resting ask at 10.03 would be crossed by our own buy at 10.03: rejected.
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000003", "side": "sell", "price": 100300, "qty": 10},
+  {"t": "34200.000000004", "side": "buy", "price": 100300, "qty": 10}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100200,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,acked,sell,100300,10,
+34200.000000004,1,rejected,buy,100300,10,self_trade

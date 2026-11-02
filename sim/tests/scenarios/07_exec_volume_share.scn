@@ -1,0 +1,11 @@
+# With exec_volume_share = 0.5 we may ride on only half of each execution.
+[config]
+{"fill_model": {"exec_volume_share": 0.5},
+ "strategy": {"actions": [{"t": "34200.000000002", "side": "buy", "price": 100000, "qty": 20}]}}
+[messages]
+34200.000000001,1,1,10,100100,-1
+34200.000000003,1,4,40,100000,1
+34200.000000004,4,4,30,100000,1
+[expected]
+34200.000000002,0,acked,buy,100000,20,
+34200.000000004,0,partial,buy,100000,15,maker

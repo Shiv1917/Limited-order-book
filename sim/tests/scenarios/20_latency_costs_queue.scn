@@ -1,0 +1,15 @@
+# to_exchange = 100 ns: the order decided at ...010 arrives at ...110, behind
+# D, which history added at ...050. D's execution therefore does not fill us;
+# E, added after we arrived, is behind us, so E's execution does.
+[config]
+{"latency_ns": {"to_exchange": 100, "from_exchange": 30},
+ "strategy": {"actions": [{"t": "34200.000000010", "side": "buy", "price": 100000, "qty": 20}]}}
+[messages]
+34200.000000001,1,1,10,100100,-1
+34200.000000050,1,4,40,100000,1
+34200.000000120,1,5,40,100000,1
+34200.000000130,4,4,40,100000,1
+34200.000000140,4,5,10,100000,1
+[expected]
+34200.000000110,0,acked,buy,100000,20,
+34200.000000140,0,partial,buy,100000,10,maker

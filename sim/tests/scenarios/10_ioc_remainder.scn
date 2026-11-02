@@ -1,0 +1,14 @@
+# IOC buy 100 against 60 displayed: 60 fill as taker, 40 are cancelled.
+[config]
+{"strategy": {"actions": [{"t": "34200.000000003", "side": "buy", "price": 100100, "qty": 100, "type": "ioc"}]}}
+[messages]
+34200.000000001,1,1,50,100000,1
+34200.000000002,1,2,60,100100,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,acked,buy,100100,100,
+34200.000000003,0,partial,buy,100100,60,taker
+34200.000000003,0,cancelled,buy,100100,40,unfilled
+[checks]
+position=60
+fees=1800

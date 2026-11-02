@@ -1,0 +1,12 @@
+# A resting order is cancelled before anything trades.
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000002", "side": "sell", "price": 100500, "qty": 20},
+  {"t": "34200.000000004", "cancel": 0}]}}
+[messages]
+34200.000000001,1,1,50,100000,1
+34200.000000003,1,2,50,100400,-1
+34200.000000005,4,2,50,100400,-1
+[expected]
+34200.000000002,0,acked,sell,100500,20,
+34200.000000004,0,cancelled,sell,100500,20,user

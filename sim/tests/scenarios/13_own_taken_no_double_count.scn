@@ -1,0 +1,17 @@
+# Two IOCs back to back against the same 200 shares: the second gets only the
+# 50 the first left behind, although history still shows 200 displayed.
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000003", "side": "buy", "price": 100100, "qty": 150, "type": "ioc"},
+  {"t": "34200.000000004", "side": "buy", "price": 100100, "qty": 100, "type": "ioc"}]},
+ "risk": {"max_order_size": 1000}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,200,100100,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,acked,buy,100100,150,
+34200.000000003,0,filled,buy,100100,150,taker
+34200.000000004,1,acked,buy,100100,100,
+34200.000000004,1,partial,buy,100100,50,taker
+34200.000000004,1,cancelled,buy,100100,50,unfilled

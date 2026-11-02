@@ -1,0 +1,17 @@
+# A limit buy at 10.02 takes 10.01 and 10.02, and the rest rests at 10.02.
+# A later execution of the 10.00 bid trades through our 10.02 remainder.
+[config]
+{"strategy": {"actions": [{"t": "34200.000000005", "side": "buy", "price": 100200, "qty": 100}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,30,100100,-1
+34200.000000003,1,3,50,100200,-1
+34200.000000004,1,5,100,100300,-1
+34200.000000006,4,1,10,100000,1
+[expected]
+34200.000000005,0,acked,buy,100200,100,
+34200.000000005,0,partial,buy,100100,30,taker
+34200.000000005,0,partial,buy,100200,50,taker
+34200.000000006,0,partial,buy,100200,10,maker
+[checks]
+position=90

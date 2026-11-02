@@ -5,10 +5,33 @@
 
 namespace ob::lobster {
 
+namespace {
+// "34200.004241176" -> 34200004241176 exactly (up to 9 fractional digits).
+bool parse_time_ns(const char* p, std::int64_t& ns) {
+    std::int64_t sec = 0;
+    const char* q = p;
+    while (*q >= '0' && *q <= '9') sec = sec * 10 + (*q++ - '0');
+    if (q == p) return false;
+    std::int64_t frac = 0;
+    int digits = 0;
+    if (*q == '.') {
+        ++q;
+        while (*q >= '0' && *q <= '9') {
+            if (digits < 9) frac = frac * 10 + (*q - '0'), ++digits;
+            ++q;
+        }
+    }
+    while (digits < 9) frac *= 10, ++digits;
+    ns = sec * 1'000'000'000LL + frac;
+    return true;
+}
+}  // namespace
+
 bool parse_row(const char* line, Row& r) {
     char* end;
     r.time = std::strtod(line, &end);
     if (end == line || *end != ',') return false;
+    if (!parse_time_ns(line, r.time_ns)) return false;
     const char* p = end + 1;
     r.type = static_cast<int>(std::strtol(p, &end, 10));
     if (end == p || *end != ',') return false;

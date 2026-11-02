@@ -1,0 +1,10 @@
+{
+  "data": {"messages": "data/AAPL_2019-01-30_message_10.csv", "book": "data/AAPL_2019-01-30_orderbook_10.csv"},
+  "latency_ns": {"feed": 0, "proc": 0, "to_exchange": 50000, "from_exchange": 50000},
+  "fees_per_share": {"taker": 0.0030, "maker_rebate": 0.0020},
+  "risk": {"max_position": 1000000, "max_order_size": 100, "max_open_orders": 100},
+  "strategy": {"name": "probe", "period_ns": 10000000000, "hold_ns": 5000000000, "qty": 100,
+               "start": "34200", "stop": "35900"},
+  "seed": 42,
+  "out_dir": "runs/aapl_probe"
+}

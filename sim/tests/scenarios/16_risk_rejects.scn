@@ -1,0 +1,21 @@
+# Order size, worst-case position and open-order limits.
+[config]
+{"risk": {"max_position": 100, "max_order_size": 50, "max_open_orders": 3},
+ "strategy": {"actions": [
+  {"t": "34200.000000003", "side": "buy", "price": 99000, "qty": 60},
+  {"t": "34200.000000004", "side": "buy", "price": 99000, "qty": 50},
+  {"t": "34200.000000005", "side": "buy", "price": 98900, "qty": 50},
+  {"t": "34200.000000006", "side": "buy", "price": 98800, "qty": 1},
+  {"t": "34200.000000007", "side": "sell", "price": 101000, "qty": 10},
+  {"t": "34200.000000008", "side": "sell", "price": 101100, "qty": 10}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100200,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,rejected,buy,99000,60,max_order_size
+34200.000000004,1,acked,buy,99000,50,
+34200.000000005,2,acked,buy,98900,50,
+34200.000000006,3,rejected,buy,98800,1,max_position
+34200.000000007,4,acked,sell,101000,10,
+34200.000000008,5,rejected,sell,101100,10,max_open_orders

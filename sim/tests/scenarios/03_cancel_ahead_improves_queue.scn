@@ -1,0 +1,14 @@
+# A cancel ahead of us improves our position for free; an execution of a later
+# order then fills us in full.
+[config]
+{"strategy": {"actions": [{"t": "34200.000000002", "side": "buy", "price": 100000, "qty": 20}]}}
+[messages]
+34200.000000001,1,1,50,100000,1
+34200.000000003,3,1,50,100000,1
+34200.000000004,1,4,40,100000,1
+34200.000000005,4,4,25,100000,1
+[expected]
+34200.000000002,0,acked,buy,100000,20,
+34200.000000005,0,filled,buy,100000,20,maker
+[checks]
+position=20

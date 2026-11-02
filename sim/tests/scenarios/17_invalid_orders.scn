@@ -1,0 +1,15 @@
+# Off-tick price and zero quantity are rejected; cancelling a rejected order
+# gives unknown_order (it never existed at the exchange).
+[config]
+{"strategy": {"actions": [
+  {"t": "34200.000000003", "side": "buy", "price": 100050, "qty": 10},
+  {"t": "34200.000000004", "side": "buy", "price": 100000, "qty": 0},
+  {"t": "34200.000000005", "cancel": 1}]}}
+[messages]
+34200.000000001,1,1,100,100000,1
+34200.000000002,1,2,100,100200,-1
+34200.000000100,1,999,1,90000,1
+[expected]
+34200.000000003,0,rejected,buy,100050,10,invalid_price
+34200.000000004,1,rejected,buy,100000,0,invalid_qty
+34200.000000005,1,rejected,buy,0,0,unknown_order

@@ -28,6 +28,7 @@ namespace ob::lobster {
 
 struct Row {
     double time = 0;
+    std::int64_t time_ns = 0;  // exact nanoseconds after midnight (parsed from the text, not from `time`)
     int type = 0;
     std::uint64_t id = 0;
     std::uint32_t size = 0;
@@ -74,6 +75,10 @@ public:
     void apply(const Row& r, std::vector<Message>* sink = nullptr);
     // Compares the top `check_levels` levels to the snapshot.
     bool check(const Snapshot& s, std::size_t row_index);
+    // The book order a type 2/3/4 row for (id, side, price) will act on: `id`
+    // itself if it is in the book, else the seeded synthetic order at that
+    // level (liquidity that predates the file), else nullopt.
+    std::optional<OrderId> resolve(std::uint64_t id, Side side, std::int64_t price) const;
 
     ReplayStats stats;
 
@@ -134,6 +139,15 @@ void Replayer<BookT>::seed(const Snapshot& s0, const Row& r0) {
         send(Message::add(id, side, px, static_cast<Qty>(sz)), nullptr);
         ++stats.seeded_levels;
     }
+}
+
+template <class BookT>
+std::optional<OrderId> Replayer<BookT>::resolve(std::uint64_t id, Side side, std::int64_t price) const {
+    if (book_.find(id)) return id;
+    const std::uint64_t k = (static_cast<std::uint64_t>(side) << 63) ^ static_cast<std::uint64_t>(price);
+    auto it = seeded_.find(k);
+    if (it == seeded_.end() || !book_.find(it->second)) return std::nullopt;
+    return it->second;
 }
 
 template <class BookT>

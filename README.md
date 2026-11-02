@@ -102,6 +102,45 @@ PYTHONPATH=build .venv/bin/python python/analysis/plot_book.py data/aapl.obm --o
 PYTHONPATH=build .venv/bin/python python/analysis/plot_mm.py data/aapl.obm --out mm.png
 ```
 
+## Event-driven backtester (ob-sim)
+
+`sim/` is a deterministic, single-instrument exchange simulator built around the book.
+
+* **Replay:** it replays a LOBSTER-format day through the unchanged engine.
+* **Fills:** a strategy's passive orders fill by exact queue position, using
+  the book's per-order arrival sequence. Aggressive orders walk displayed
+  depth, and an `own_taken` counter stops two takes from filling against the
+  same shares.
+* **Latency:** a configurable model with feed, processing, entry and return
+  delays plus seeded jitter. The strategy's own view of its position lags
+  the exchange.
+* **Accounting:** integer cash, inventory and average-cost PnL, plus
+  fill-quality diagnostics (spread capture, adverse selection at 1 s/10 s,
+  queue wait).
+
+```bash
+# AAPL day in LOBSTER format, built from the ITCH sample (LOBSTER samples are no longer public)
+gunzip -c data/itch_raw/01302019_head600M.gz | ./build/ob_itch2lobster --symbol AAPL --out data/AAPL_2019-01-30
+./build/sim/ob-sim check --config sim/configs/aapl_mm.json        # parity on every row
+./build/sim/ob-sim run   --config sim/configs/aapl_mm.json        # -> runs/aapl_mm/{orders,fills,pnl}.csv, summary.json, manifest.json
+./build/sim/ob-sim sweep --config sim/configs/aapl_mm.json --param latency_ns.to_exchange --values 0,10000,50000,200000,1000000,5000000
+```
+
+How it was validated (details in [docs/sim_validation.md](docs/sim_validation.md)):
+
+* 21 hand-calculated fill scenarios.
+* Accounting identity tests.
+* Book parity on all 328,382 AAPL rows.
+* A fuzz test of the invariants, and repeat runs with identical output
+  hashes (the same with Apple clang and GCC).
+* An independent Python model, written from the spec without the C++ source,
+  which matches all 212 probe-strategy fills exactly.
+
+Every known bias and its direction is listed in
+[docs/sim_biases.md](docs/sim_biases.md). One finding: with trade-through
+fills on, the market maker's fill rate *rises* with latency, because stale
+quotes get picked off. With trade-through off, it falls as expected.
+
 ## Repository layout
 
 ```
@@ -112,10 +151,12 @@ ref/          reference implementation (std::map + std::list): oracle and baseli
 tests/        Catch2 unit tests, differential fuzzer, libFuzzer target, LOBSTER fixture
 bench/        ob_bench (per-stage latency/throughput), ob_e2e_bench (SPSC pipeline)
 tools/        ITCH 5.0 + LOBSTER parsers/replayers, .obm stream format, synthetic generator
-strategy/     market maker + backtester
+strategy/     market maker + backtester (message-count latency, engine-injected quotes)
+sim/          ob-sim: event-driven backtester (exchange sim, latency, portfolio, strategies, tests)
+ref_py/       independent Python fill model used to cross-check ob-sim
 python/       pybind11 module (pyob) + analysis/plotting scripts
-docs/         design.md, benchmarks.md, plots
-scripts/      fetch_itch.sh, bench_linux.sh
+docs/         design.md, benchmarks.md, sim_design.md, sim_validation.md, sim_biases.md, plots
+scripts/      fetch_itch.sh, bench_linux.sh, sim_determinism.sh
 results/      raw benchmark output, histograms, profiles from the runs quoted above
 ```
 
